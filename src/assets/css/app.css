@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --vuelog-keyOrIdx: hsl(236, 24%, 64%);
+  --vuelog-type: #f8f8f2;
+  --vuelog-primary: #3e4165;
+  --vuelog-secondary: #2e304b;
+  --vuelog-comment: #6272a4;
+  --vuelog-undefined: #8be9fd;
+  --vuelog-number: #50fa7b;
+  --vuelog-string: #ffb86c;
+  --vuelog-object: #ff79c6;
+  --vuelog-array: #bd93f9;
+  --vuelog-null: #ff5555;
+  --vuelog-boolean: #f1fa8c;
+  --vuelog-regexp: #f1fa8c;
+  --vuelog-htmlbodyelement: #6f6fff;
+  --vuelog-date: #ffae57;
+  --vuelog-location: #ff8cf0;
+  --vuelog-bigint: #ad82cb;
+  --vuelog-symbol: #ff6e67;
+  --vuelog-function: #77e89d;
+}
