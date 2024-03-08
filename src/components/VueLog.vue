@@ -64,9 +64,10 @@ const isComplex = ['object', 'array', 'map', 'set'].includes(dataType)
             v-for="key in Object.keys(dump)"
             :key="key">
             <td
-              :class="`align-top ${isComplex ? 'p-1 m-0 border-2 border-solid border-secondary' : 'border-none border-0'} ${['object', 'array'].includes(getType(dump[key])) ? 'py-1.5 top-0' : 'top-1.5'}`">
-              <div class="h-full sticky top-1.5">
-                <div class="px-1.5 py-0.5 text-keyOrIdx">{{ key }}</div>
+              :class="`align-top ${isComplex ? 'p-1 m-0 border-2 border-solid border-secondary' : 'border-none border-0'}`">
+              <div
+                :class="`h-full sticky ${['object', 'array'].includes(getType(dump[key])) ? 'py-1.5 top-0' : 'top-1.5'}`">
+                <div class="px-1.5 py-0.5 text-keyOrIdx">ll{{ key }}</div>
               </div>
             </td>
             <td
