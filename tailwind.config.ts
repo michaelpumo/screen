@@ -6,13 +6,16 @@ export default {
     fontSize: {
       xs: '0.6rem',
       sm: '0.8rem',
-      base: '1rem'
+      base: '1rem',
+      md: '1.2rem',
+      lg: '1.4rem'
     },
     colors: {
       keyOrIdx: 'var(--screen-keyOrIdx)',
       type: 'var(--screen-type)',
       primary: 'var(--screen-primary)',
       secondary: 'var(--screen-secondary)',
+      tertiary: 'var(--screen-tertiary)',
 
       token: {
         array: 'var(--screen-array)',
@@ -37,7 +40,7 @@ export default {
       }
     },
     fontFamily: {
-      mono: ['Geist Mono', 'Menlo', 'Monaco', 'Courier New', 'monospace']
+      mono: ['Geist Mono', 'Menlo', 'Monaco', 'Courier', 'monospace']
     },
     extend: {}
   },
