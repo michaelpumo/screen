@@ -1,9 +1,9 @@
 <script lang="ts" setup>
-import VueLog from '@/components/VueLog.vue'
+import Screen from '@/components/Screen.vue'
 
 const data = {
-  arrayValue: [1, 2, { name: 'Michael', age: 40 }, 4, 5],
-  objectValue: {
+  arrayVal: [1, 2, { name: 'Michael', age: 40 }, 4, 5],
+  objectVal: {
     name: 'John',
     age: 30,
     address: {
@@ -22,26 +22,44 @@ const data = {
       }
     ]
   },
-  nanValue: NaN,
-  regExValue: /^.+$/,
-  documentValue: document.body,
-  dateValue: new Date(),
-  windowValue: window.location,
-  undefinedValue: undefined,
-  nullValue: null,
-  booleanValue: true,
-  numberValue: 42,
-  bigIntValue: BigInt(9007199254740991),
-  stringValue: 'Hello, World!',
-  symbolValue: Symbol('example'),
-  functionValue: function () {
+  nanVal: NaN,
+  regExVal: /^.+$/,
+  documentVal: document.body,
+  dateVal: new Date(),
+  windowVal: window.location,
+  undefinedVal: undefined,
+  nullVal: null,
+  booleanVal: true,
+  numberVal: 42,
+  bigIntVal: BigInt(9007199254740991),
+  stringVal: 'Hello, World!',
+  symbolVal: Symbol('example'),
+  functionVal: function () {
     return 'Hello, World!'
   }
+}
+
+const family = {
+  name: 'Michael',
+  age: 40,
+  children: false,
+  siblings: [
+    {
+      name: 'Vincent',
+      age: 43,
+      children: true
+    },
+    {
+      name: 'Even with the proposed change to consider the initializer for a const a literal type location, we couldnt trasitively to the same for properties in an object initializer because there is no indication that they are const. Specifically, you might want to assign a new value to styles.container.alignItems, but you wouldnt be able to if we inferred type "center" for it.',
+      age: 38,
+      children: true
+    }
+  ]
 }
 </script>
 
 <template>
   <div class="p-5">
-    <VueLog :dump="data" />
+    <Screen :log="data" />
   </div>
 </template>

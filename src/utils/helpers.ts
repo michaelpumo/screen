@@ -1,3 +1,5 @@
+// type DataTypes = 'object' | 'array' | 'map' | 'set' | 'string' | 'number'
+
 const getType = (value: any): string =>
   Object.prototype.toString
     .call(value)
@@ -15,7 +17,16 @@ const getLength = (value: any): number => {
     return value.size
   }
 
-  return 0
+  return -1
 }
 
-export { getType, getLength }
+const hasLength = (value: string): boolean => {
+  return ['array', 'object', 'map', 'set', 'string'].includes(value)
+}
+
+const isComplexType = (value: any): boolean => {
+  const dataType = getType(value)
+  return ['object', 'array', 'map', 'set'].includes(dataType)
+}
+
+export { getType, getLength, hasLength, isComplexType }

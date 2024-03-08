@@ -1,3 +1,3 @@
-import VueLog from '@/components/VueLog.vue'
+import screen from '@/components/screen.vue'
 
-export { VueLog }
+export { screen }

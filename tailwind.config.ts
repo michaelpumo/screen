@@ -3,28 +3,33 @@ export default {
   content: ['./index.html', './App.vue', './src/**/*.{js,ts,vue}'],
   safelist: [{ pattern: /(bg|text|border)-./ }],
   theme: {
+    fontSize: {
+      xs: '0.6rem',
+      sm: '0.8rem',
+      base: '1rem'
+    },
     colors: {
       black: '#000',
-      keyOrIdx: 'var(--vuelog-keyOrIdx)',
-      type: 'var(--vuelog-type)',
-      primary: 'var(--vuelog-primary)',
-      secondary: 'var(--vuelog-secondary)',
+      keyOrIdx: 'var(--screen-keyOrIdx)',
+      type: 'var(--screen-type)',
+      primary: 'var(--screen-primary)',
+      secondary: 'var(--screen-secondary)',
       brand: {
-        comment: 'var(--vuelog-comment)',
-        undefined: 'var(--vuelog-undefined)',
-        number: 'var(--vuelog-number)',
-        string: 'var(--vuelog-string)',
-        object: 'var(--vuelog-object)',
-        array: 'var(--vuelog-array)',
-        null: 'var(--vuelog-null)',
-        boolean: 'var(--vuelog-boolean)',
-        regexp: 'var(--vuelog-regexp)',
-        htmlbodyelement: 'var(--vuelog-htmlbodyelement)',
-        date: 'var(--vuelog-date)',
-        location: 'var(--vuelog-location)',
-        bigint: 'var(--vuelog-bigint)',
-        symbol: 'var(--vuelog-symbol)',
-        function: 'var(--vuelog-function)'
+        comment: 'var(--screen-comment)',
+        undefined: 'var(--screen-undefined)',
+        number: 'var(--screen-number)',
+        string: 'var(--screen-string)',
+        object: 'var(--screen-object)',
+        array: 'var(--screen-array)',
+        null: 'var(--screen-null)',
+        boolean: 'var(--screen-boolean)',
+        regexp: 'var(--screen-regexp)',
+        htmlbodyelement: 'var(--screen-htmlbodyelement)',
+        date: 'var(--screen-date)',
+        location: 'var(--screen-location)',
+        bigint: 'var(--screen-bigint)',
+        symbol: 'var(--screen-symbol)',
+        function: 'var(--screen-function)'
       }
     },
     fontFamily: {
