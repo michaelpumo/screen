@@ -1,6 +1,6 @@
 /// <reference types="vitest" />
 
-import * as path from 'path'
+import { resolve } from 'path'
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 
@@ -9,14 +9,10 @@ export default defineConfig({
     globals: true
     // setupFiles: ['vitest.setup.ts']
   },
-  plugins: [
-    vue({
-      reactivityTransform: true
-    })
-  ],
+  plugins: [vue({})],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src')
+      '@': resolve(__dirname, './src')
     }
   },
   build: {
@@ -24,7 +20,7 @@ export default defineConfig({
     target: 'esnext',
     sourcemap: true,
     lib: {
-      entry: path.resolve(__dirname, 'src/lib.ts'),
+      entry: resolve(__dirname, 'src/lib.ts'),
       name: 'lib',
       fileName: (format) => `lib.${format}.js`
     },
