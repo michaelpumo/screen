@@ -29,7 +29,10 @@ export default {
         location: 'var(--screen-location)',
         bigint: 'var(--screen-bigint)',
         symbol: 'var(--screen-symbol)',
-        function: 'var(--screen-function)'
+        function: 'var(--screen-function)',
+        weakmap: 'var(--screen-weakmap)',
+        map: 'var(--screen-map)',
+        set: 'var(--screen-set)'
       }
     },
     fontFamily: {

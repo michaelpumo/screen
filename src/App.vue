@@ -2,6 +2,19 @@
 import Screen from '@/components/Screen.vue'
 
 const data = {
+  weakMapVal: new WeakMap().set({}, 'world'),
+  weakMap2Val: new WeakMap([
+    [{ name: 'John' }, 'John Doe'],
+    [{ name: 'Jane' }, 'Jane Doe']
+  ]),
+  mapVal: new Map().set('person', { name: 'Alice', age: 25 }).set('life', 42),
+  setVal: new Set().add({ name: 'Alice', age: 25 }).add(42).add([1, 2, 3]),
+  weakSetVal: new Set()
+    .add({ name: 'Alice', age: 25 })
+    .add(42)
+    .add(
+      'This book is a treatise on the theory of ethics, very popular during the Renaissance.'
+    ),
   arrayVal: [1, 2, { name: 'Michael', age: 40 }, 4, 5],
   objectVal: {
     name: 'John',

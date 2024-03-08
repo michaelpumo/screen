@@ -22,4 +22,7 @@
   --screen-bigint: #ad82cb;
   --screen-symbol: #ff6e67;
   --screen-function: #77e89d;
+  --screen-weakmap: #ffaa00;
+  --screen-map: #00aaff;
+  --screen-set: #aa00ff;
 }

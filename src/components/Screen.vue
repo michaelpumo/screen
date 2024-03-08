@@ -11,7 +11,7 @@ const dataComplexType = isComplexType(log)
 </script>
 
 <template>
-  <div class="w-max text-sm font-mono bg-primary">
+  <div class="w-max text-sm text-type font-mono bg-primary">
     <table class="border-collapse border-spacing-0">
       <tr>
         <td
@@ -79,17 +79,28 @@ const dataComplexType = isComplexType(log)
             </td>
           </tr>
         </template>
-        <!-- <template v-else-if="dataType === 'set'">
+
+        <template v-else-if="dataType === 'set'">
           <tr
-            v-for="value in log"
+            v-for="value of log"
             :key="value">
-            <td>
-              <Screen :log="value" />
+            <td
+              :class="`align-top ${dataComplexType ? 'p-1 m-0 border-2 border-solid border-secondary' : 'border-none border-0'}`">
+              <div
+                :class="`h-full sticky ${['object', 'array'].includes(getType(value)) ? 'py-1.5 top-0' : 'top-1.5'}`">
+                <div class="px-1.5 py-0.5 text-keyOrIdx">
+                  <Screen :log="value" />
+                  <!-- {{ value }} -->
+                </div>
+              </div>
             </td>
+            <!-- <td>
+              <Screen :log="value" />
+            </td> -->
           </tr>
         </template>
-      -->
-        <template v-else-if="dataType === 'array'">
+
+        <template v-else>
           <tr
             v-for="(value, index) of log"
             :key="index">
