@@ -7,15 +7,30 @@ const data = {
     [{ name: 'John' }, 'John Doe'],
     [{ name: 'Jane' }, 'Jane Doe']
   ]),
-  mapVal: new Map().set('person', { name: 'Alice', age: 25 }).set('life', 42),
-  setVal: new Set().add({ name: 'Alice', age: 25 }).add(42).add([1, 2, 3]),
-  weakSetVal: new Set()
+  mapVal: new Map()
+    .set('person', { name: 'Alice', age: 25 })
+    .set('life', 42)
+    .set(
+      'title',
+      'This book is a treatise on the theory of ethics, very popular during the Renaissance.'
+    ),
+  setVal: new Set()
     .add({ name: 'Alice', age: 25 })
     .add(42)
+    .add([1, 2, 3])
     .add(
       'This book is a treatise on the theory of ethics, very popular during the Renaissance.'
     ),
-  arrayVal: [1, 2, { name: 'Michael', age: 40 }, 4, 5],
+  weakSetVal: new WeakSet().add({ name: 'Alice', age: 25 }),
+  arrayVal: [
+    1,
+    2,
+    { name: 'Michael', age: 40 },
+    4,
+    new Set().add({ name: 'Alice', age: 25 }).add(42).add([1, 2, 3]),
+    ,
+    5
+  ],
   objectVal: {
     name: 'John',
     age: 30,

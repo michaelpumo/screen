@@ -7,22 +7,24 @@
   --screen-type: #dddee9;
   --screen-primary: #2c2e44;
   --screen-secondary: #1e202f;
-  --screen-comment: #6272a4;
-  --screen-undefined: #8be9fd;
-  --screen-number: #50fa7b;
-  --screen-string: #ffb86c;
-  --screen-object: #ff79c6;
+
   --screen-array: #bd93f9;
-  --screen-null: #ff5555;
-  --screen-boolean: #f1fa8c;
-  --screen-regexp: #f1fa8c;
-  --screen-htmlbodyelement: #6f6fff;
-  --screen-date: #ffae57;
-  --screen-location: #ff8cf0;
   --screen-bigint: #ad82cb;
-  --screen-symbol: #ff6e67;
+  --screen-boolean: #f1fa8c;
+  --screen-comment: #6272a4;
+  --screen-date: #ffae57;
   --screen-function: #77e89d;
-  --screen-weakmap: #ffaa00;
+  --screen-htmlbodyelement: #6f6fff;
+  --screen-location: #ff8cf0;
   --screen-map: #00aaff;
+  --screen-null: #ff5555;
+  --screen-number: #50fa7b;
+  --screen-object: #ff79c6;
+  --screen-regexp: #f1fa8c;
   --screen-set: #aa00ff;
+  --screen-string: #ffb86c;
+  --screen-symbol: #ff6e67;
+  --screen-undefined: #8be9fd;
+  --screen-weakmap: #ffaa00;
+  --screen-weakset: #ff00aa;
 }

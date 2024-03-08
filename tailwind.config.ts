@@ -9,30 +9,31 @@ export default {
       base: '1rem'
     },
     colors: {
-      black: '#000',
       keyOrIdx: 'var(--screen-keyOrIdx)',
       type: 'var(--screen-type)',
       primary: 'var(--screen-primary)',
       secondary: 'var(--screen-secondary)',
-      brand: {
-        comment: 'var(--screen-comment)',
-        undefined: 'var(--screen-undefined)',
-        number: 'var(--screen-number)',
-        string: 'var(--screen-string)',
-        object: 'var(--screen-object)',
+
+      token: {
         array: 'var(--screen-array)',
-        null: 'var(--screen-null)',
-        boolean: 'var(--screen-boolean)',
-        regexp: 'var(--screen-regexp)',
-        htmlbodyelement: 'var(--screen-htmlbodyelement)',
-        date: 'var(--screen-date)',
-        location: 'var(--screen-location)',
         bigint: 'var(--screen-bigint)',
-        symbol: 'var(--screen-symbol)',
+        boolean: 'var(--screen-boolean)',
+        comment: 'var(--screen-comment)',
+        date: 'var(--screen-date)',
         function: 'var(--screen-function)',
-        weakmap: 'var(--screen-weakmap)',
+        htmlbodyelement: 'var(--screen-htmlbodyelement)',
+        location: 'var(--screen-location)',
         map: 'var(--screen-map)',
-        set: 'var(--screen-set)'
+        null: 'var(--screen-null)',
+        number: 'var(--screen-number)',
+        object: 'var(--screen-object)',
+        regexp: 'var(--screen-regexp)',
+        set: 'var(--screen-set)',
+        string: 'var(--screen-string)',
+        symbol: 'var(--screen-symbol)',
+        undefined: 'var(--screen-undefined)',
+        weakmap: 'var(--screen-weakmap)',
+        weakset: 'var(--screen-weakset)'
       }
     },
     fontFamily: {
