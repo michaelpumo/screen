@@ -1,7 +1,9 @@
 /** @type {import('tailwindcss').Config} */
+
 export default {
   content: ['./index.html', './App.vue', './src/**/*.{js,ts,vue}'],
-  safelist: [{ pattern: /(bg|text|border)-./ }],
+  safelist: [{ pattern: /(sl-bg-token|sl-text-token)-./ }],
+  prefix: 'sl-',
   theme: {
     fontSize: {
       xs: '0.6rem',

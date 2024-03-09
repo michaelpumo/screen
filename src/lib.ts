@@ -1,3 +1,3 @@
-import screen from '@/components/screen.vue'
+import Screen from '@/components/Screen.vue'
 
-export { screen }
+export { Screen }

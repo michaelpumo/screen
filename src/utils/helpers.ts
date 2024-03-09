@@ -1,5 +1,3 @@
-// type DataTypes = 'object' | 'array' | 'map' | 'set' | 'string' | 'number'
-
 const getType = (value: any): string =>
   Object.prototype.toString
     .call(value)
