@@ -49,7 +49,7 @@ const family = {
 | max-depth | number | Infinity | The maximum depth of objects to display. |
 
 #### Motivation
-I simply wanted something that functioned better than a basic `<pre>` tag for logging to the screen. 🤷🏻‍♂️ Feel free to share your ideas on how this idea can be improved.
+I simply wanted something that functioned better than a basic `<pre>` tag for logging to the screen. 🤷🏻‍♂️ Feel free to share your thoughts on how this concept can be improved.
 
 #### Requirements
 - Vue 3+
