@@ -4,6 +4,7 @@ import Screen from '@/components/Screen.vue'
 const family = {
   name: 'Michael',
   age: 40,
+  target: Infinity,
   children: false,
   about: {
     job: 'Web Developer',
@@ -44,7 +45,7 @@ const family = {
 </script>
 
 <template>
-  <div class="p-5">
+  <div class="sl-p-5">
     <Screen :log="family" />
   </div>
 </template>

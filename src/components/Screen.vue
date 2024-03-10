@@ -1,135 +1,72 @@
 <script lang="ts" setup>
-import { getType, getLength, hasLength, isComplexType } from '@/utils/helpers'
+import { onMounted, ref, watch } from 'vue'
+import Tree from '@/components/Tree.vue'
+import Switch from '@/components/Switch.vue'
 import '@/assets/css/app.css'
 
 type Props = {
   log: any
+  label?: string
+  maxLength?: number
+  maxDepth?: number
 }
 
-const { log } = defineProps<Props>()
-const dataType = getType(log)
-const dataComplexType = isComplexType(log)
+const {
+  log,
+  label = 'Screen Log',
+  maxLength = Infinity,
+  maxDepth = Infinity
+} = defineProps<Props>()
 
-const toggle = (e: Event) => {
-  const table = (e.target as HTMLElement).closest('table')
+const dark = ref(false)
 
-  if (!table) return
+onMounted(() => {
+  dark.value = Boolean(localStorage?.['sl-mode'] === 'dark')
+})
 
-  const rows = Array.from(
-    table.querySelectorAll(':scope > tr:not(:first-child)')
-  ) as HTMLTableRowElement[]
-
-  if (!rows || rows.length === 0) {
-    return
-  }
-
-  rows.forEach((tr) => {
-    tr.classList.toggle('sl-hidden')
-  })
-}
+watch(dark, (value) => {
+  localStorage['sl-mode'] = value ? 'dark' : 'light'
+})
 </script>
 
 <template>
-  <table
-    class="sl-w-max sl-text-sm sl-text-type sl-font-mono sl-border-collapse sl-border-spacing-0 sl-outline-[rgba(0,0,0,0)] sl-rounded sl-outline sl-outline-1 hover:sl-outline-tertiary sl-outline-offset-1 sl-transition-all sl-duration-200">
-    <tr @click="toggle">
-      <td
-        v-if="dataType !== 'set'"
-        :class="`sl-bg-primary sl-align-top ${dataComplexType ? 'sl-p-1 sl-m-0 sl-border-2 sl-border-solid sl-border-secondary' : 'sl-border-none sl-border-0'}`">
-        <template v-if="dataComplexType">
-          <div
-            class="sl-select-none sl-cursor-pointer sl-bg-secondary sl-px-1.5 sl-py-0.5 sl-rounded sl-text-keyOrIdx">
-            {{ dataType === 'array' ? 'i' : 'key' }}
-          </div>
-        </template>
-        <template v-else>
-          <div class="sl-h-full sl-sticky sl-top-1.5">
-            <div
-              :class="`sl-bg-secondary sl-px-1.5 sl-py-0.5 sl-rounded sl-text-token-${dataType}`">
-              {{ dataType }}
-            </div>
-          </div>
-        </template>
-      </td>
+  <div
+    data-component="Screen"
+    :data-mode="dark ? 'dark' : 'light'"
+    class="sl-w-full sl-max-w-max sl-p-1 sl-bg-light-secondary dark:sl-bg-dark-secondary sl-rounded">
+    <header
+      class="sl-w-full sl-flex sl-items-center sl-justify-between sl-bg-light-primary dark:sl-bg-dark-primary sl-px-2 sl-py-1.5 sl-rounded-tl sl-rounded-tr sl-gap-2 sl-border-2 sl-border-light-secondary dark:sl-border-dark-secondary sl-border-b-0">
+      <p
+        v-if="label"
+        class="sl-text-light-type dark:sl-text-dark-type sl-font-mono sl-text-sm sl-font-bold sl-m-0 sl-p-0">
+        {{ label }}
+      </p>
 
-      <td
-        :class="`sl-bg-primary ${dataComplexType ? 'sl-p-1 sl-m-0 sl-border-2 sl-border-solid sl-border-secondary' : 'sl-border-none sl-border-0'}`">
-        <template v-if="dataComplexType">
-          <div
-            :class="`sl-flex sl-items-center sl-justify-start sl-gap-1.5 sl-bg-secondary sl-px-1.5 sl-py-0.5 sl-rounded sl-select-none sl-cursor-pointer sl-text-token-${dataType}`">
-            {{ dataType === 'symbol' ? log.description : dataType }}
+      <ul
+        class="sl-flex sl-m-0 sl-p-0 sl-ml-auto sl-text-light-muted dark:sl-text-dark-muted sl-font-mono sl-text-xs sl-gap-1">
+        <li
+          v-if="maxLength !== Infinity"
+          class="after:sl-content-['|'] after:sl-opacity-50 after:sl-ml-1">
+          Max Length: {{ maxLength }}
+        </li>
+        <li
+          v-if="maxDepth !== Infinity"
+          class="after:sl-content-['|'] after:sl-opacity-50 after:sl-ml-1">
+          Max Depth: {{ maxDepth }}
+        </li>
+        <li>{{ dark ? 'Dark' : 'Light' }}</li>
+      </ul>
 
-            <span
-              v-if="hasLength(dataType)"
-              :class="`sl-rounded sl-px-1 sl-font-bold sl-text-xs sl-text-primary sl-bg-token-${dataType}`">
-              {{ getLength(log) }}
-            </span>
-          </div>
-        </template>
-        <template v-else>
-          <div
-            class="sl-flex sl-items-center sl-justify-start sl-gap-1.5 sl-bg-secondary sl-text-type sl-px-1.5 sl-py-0.5 sl-rounded sl-text-balance sl-max-w-[60ch] sl-max-h-20 sl-overflow-y-auto sl-overscroll-contain">
-            {{ log ?? '(empty)' }}
+      <Switch
+        v-model="dark"
+        label="Mode" />
+    </header>
 
-            <span
-              v-if="hasLength(dataType)"
-              :class="`sl-rounded sl-px-1 sl-font-bold sl-text-xs sl-text-primary sl-bg-token-${dataType}`">
-              {{ getLength(log) }}
-            </span>
-          </div>
-        </template>
-      </td>
-    </tr>
-
-    <template v-if="dataComplexType">
-      <template v-if="dataType === 'object'">
-        <tr
-          v-for="key in Object.keys(log)"
-          :key="key">
-          <td
-            :class="`sl-bg-primary sl-align-top ${dataComplexType ? 'sl-p-1 sl-m-0 sl-border-2 sl-border-solid sl-border-secondary' : 'sl-border-none sl-border-0'}`">
-            <div
-              :class="`sl-h-full sl-sticky ${['object', 'array'].includes(getType(log[key])) ? 'sl-py-1.5 sl-top-0' : 'sl-top-1.5'}`">
-              <div class="sl-px-1.5 sl-py-0.5 sl-text-keyOrIdx">{{ key }}</div>
-            </div>
-          </td>
-          <td
-            :class="`sl-bg-primary ${dataComplexType ? 'sl-p-1 sl-m-0 sl-border-2 sl-border-solid sl-border-secondary' : 'sl-border-none sl-border-0'}`">
-            <Screen :log="log[key]" />
-          </td>
-        </tr>
-      </template>
-
-      <template v-else-if="dataType === 'set'">
-        <tr
-          v-for="value of log"
-          :key="value">
-          <td
-            :class="`sl-bg-primary ${dataComplexType ? 'sl-p-1 sl-m-0 sl-border-2 sl-border-solid sl-border-secondary' : 'sl-border-none sl-border-0'}`">
-            <Screen :log="value" />
-          </td>
-        </tr>
-      </template>
-
-      <template v-else>
-        <tr
-          v-for="(value, index) of log"
-          :key="index">
-          <td
-            :class="`sl-bg-primary sl-align-top ${dataComplexType ? 'sl-p-1 sl-m-0 sl-border-2 sl-border-solid sl-border-secondary' : 'sl-border-none sl-border-0'}`">
-            <div
-              :class="`sl-h-full sl-sticky ${['object', 'array'].includes(getType(value)) ? 'sl-py-1.5 sl-top-0' : 'sl-top-1.5'}`">
-              <div class="sl-px-1.5 sl-py-0.5 sl-text-keyOrIdx">
-                {{ index }}
-              </div>
-            </div>
-          </td>
-          <td
-            :class="`sl-bg-primary sl-align-top ${dataComplexType ? 'sl-p-1 sl-m-0 sl-border-2 sl-border-solid sl-border-secondary' : 'sl-border-none sl-border-0'}`">
-            <Screen :log="value" />
-          </td>
-        </tr>
-      </template>
-    </template>
-  </table>
+    <main>
+      <Tree
+        :log="log"
+        :max-length="maxLength"
+        :max-depth="maxDepth" />
+    </main>
+  </div>
 </template>

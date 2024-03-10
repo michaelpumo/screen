@@ -3,29 +3,37 @@
 @tailwind utilities;
 
 :root {
-  --screen-keyOrIdx: #6782bb;
-  --screen-type: #dddee9;
-  --screen-primary: #2c2e44;
-  --screen-secondary: #1e202f;
-  --screen-tertiary: #55bdf7;
+  --sl-light-muted: #6782bb;
+  --sl-light-type: #2c2e44;
+  --sl-light-primary: #fff;
+  --sl-light-secondary: #f4f4fb;
+  --sl-light-tertiary: #55bdf7;
+  --sl-light-quaternary: #42b883;
 
-  --screen-array: #bd93f9;
-  --screen-bigint: #ad82cb;
-  --screen-boolean: #f1fa8c;
-  --screen-comment: #6272a4;
-  --screen-date: #ffae57;
-  --screen-function: #77e89d;
-  --screen-htmlbodyelement: #6f6fff;
-  --screen-location: #ff8cf0;
-  --screen-map: #00aaff;
-  --screen-null: #ff5555;
-  --screen-number: #50fa7b;
-  --screen-object: #ff79c6;
-  --screen-regexp: #f1fa8c;
-  --screen-set: #aa00ff;
-  --screen-string: #ffb86c;
-  --screen-symbol: #ff6e67;
-  --screen-undefined: #8be9fd;
-  --screen-weakmap: #ffaa00;
-  --screen-weakset: #ff00aa;
+  --sl-dark-muted: #6782bb;
+  --sl-dark-type: #dddee9;
+  --sl-dark-primary: #2c2e44;
+  --sl-dark-secondary: #1e202f;
+  --sl-dark-tertiary: #55bdf7;
+  --sl-dark-quaternary: #42b883;
+
+  --sl-array: #bd93f9;
+  --sl-bigint: #ad82cb;
+  --sl-boolean: #f1fa8c;
+  --sl-comment: #6272a4;
+  --sl-date: #ffae57;
+  --sl-function: #77e89d;
+  --sl-htmlbodyelement: #6f6fff;
+  --sl-location: #ff8cf0;
+  --sl-map: #00aaff;
+  --sl-null: #ff5555;
+  --sl-number: #50fa7b;
+  --sl-object: #ff79c6;
+  --sl-regexp: #f1fa8c;
+  --sl-set: #aa00ff;
+  --sl-string: #ffb86c;
+  --sl-symbol: #ff6e67;
+  --sl-undefined: #8be9fd;
+  --sl-weakmap: #ffaa00;
+  --sl-weakset: #ff00aa;
 }

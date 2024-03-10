@@ -9,7 +9,14 @@ export default defineConfig({
     globals: true
     // setupFiles: ['vitest.setup.ts']
   },
-  plugins: [vue({})],
+  plugins: [
+    vue({
+      script: {
+        defineModel: true,
+        propsDestructure: true
+      }
+    })
+  ],
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src')

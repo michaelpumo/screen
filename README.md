@@ -45,11 +45,13 @@ const family = {
 ```
 
 #### Motivation
-I simply wanted something that functioned better than a basic `<pre>` tag for logging to the screen. 🤷🏻‍♂️ Feel free to share your ideas on how this can be improved.
+I simply wanted something that functioned better than a basic `<pre>` tag for logging to the screen. 🤷🏻‍♂️ Feel free to share your ideas on how this idea can be improved.
 
 #### Props
 
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
 | log | any | undefined | The variable to log to the screen. |
-| theme | 'light' \| 'dark' | dark | The theme you want to see. |
+| label | string | 'Screen Log' | The label to display at the top of the screen. |
+| max-length | number | Infinity | The maximum length of arrays and object keys to display. |
+| max-depth | number | Infinity | The maximum depth of objects to display. |

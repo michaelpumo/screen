@@ -4,6 +4,7 @@ export default {
   content: ['./index.html', './App.vue', './src/**/*.{js,ts,vue}'],
   safelist: [{ pattern: /(sl-bg-token|sl-text-token)-./ }],
   prefix: 'sl-',
+  darkMode: ['selector', '[data-mode="dark"]'],
   theme: {
     fontSize: {
       xs: '0.6rem',
@@ -13,32 +14,43 @@ export default {
       lg: '1.4rem'
     },
     colors: {
-      keyOrIdx: 'var(--screen-keyOrIdx)',
-      type: 'var(--screen-type)',
-      primary: 'var(--screen-primary)',
-      secondary: 'var(--screen-secondary)',
-      tertiary: 'var(--screen-tertiary)',
-
+      transparent: 'transparent',
+      light: {
+        muted: 'var(--sl-light-muted)',
+        type: 'var(--sl-light-type)',
+        primary: 'var(--sl-light-primary)',
+        secondary: 'var(--sl-light-secondary)',
+        tertiary: 'var(--sl-light-tertiary)',
+        quaternary: 'var(--sl-light-quaternary)'
+      },
+      dark: {
+        muted: 'var(--sl-dark-muted)',
+        type: 'var(--sl-dark-type)',
+        primary: 'var(--sl-dark-primary)',
+        secondary: 'var(--sl-dark-secondary)',
+        tertiary: 'var(--sl-dark-tertiary)',
+        quaternary: 'var(--sl-dark-quaternary)'
+      },
       token: {
-        array: 'var(--screen-array)',
-        bigint: 'var(--screen-bigint)',
-        boolean: 'var(--screen-boolean)',
-        comment: 'var(--screen-comment)',
-        date: 'var(--screen-date)',
-        function: 'var(--screen-function)',
-        htmlbodyelement: 'var(--screen-htmlbodyelement)',
-        location: 'var(--screen-location)',
-        map: 'var(--screen-map)',
-        null: 'var(--screen-null)',
-        number: 'var(--screen-number)',
-        object: 'var(--screen-object)',
-        regexp: 'var(--screen-regexp)',
-        set: 'var(--screen-set)',
-        string: 'var(--screen-string)',
-        symbol: 'var(--screen-symbol)',
-        undefined: 'var(--screen-undefined)',
-        weakmap: 'var(--screen-weakmap)',
-        weakset: 'var(--screen-weakset)'
+        array: 'var(--sl-array)',
+        bigint: 'var(--sl-bigint)',
+        boolean: 'var(--sl-boolean)',
+        comment: 'var(--sl-comment)',
+        date: 'var(--sl-date)',
+        function: 'var(--sl-function)',
+        htmlbodyelement: 'var(--sl-htmlbodyelement)',
+        location: 'var(--sl-location)',
+        map: 'var(--sl-map)',
+        null: 'var(--sl-null)',
+        number: 'var(--sl-number)',
+        object: 'var(--sl-object)',
+        regexp: 'var(--sl-regexp)',
+        set: 'var(--sl-set)',
+        string: 'var(--sl-string)',
+        symbol: 'var(--sl-symbol)',
+        undefined: 'var(--sl-undefined)',
+        weakmap: 'var(--sl-weakmap)',
+        weakset: 'var(--sl-weakset)'
       }
     },
     fontFamily: {
