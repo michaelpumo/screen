@@ -55,23 +55,23 @@ const checked = computed(
 
     <span
       :class="[
-        'sl-bg-light-type dark:sl-bg-dark-type peer-checked:sl-bg-light-quaternary  dark:peer-checked:sl-bg-dark-quaternary sl-relative sl-block sl-w-9 sl-h-5 sl-flex-none sl-rounded-3xl sl-transition-all dark:peer-checked:sl-border-dark-quaternary ',
+        'sl-relative sl-block sl-w-10 sl-h-5 sl-rounded-3xl sl-transition-colors sl-duration-200 peer-checked:sl-bg-light-quaternary sl-bg-light-type dark:sl-bg-dark-type dark:peer-checked:sl-bg-dark-quaternary',
         `
+        after:sl-content-['']
+        after:sl-block
+        after:sl-box-border
         after:sl-bg-light-secondary 
         after:sl-w-auto
         after:sl-aspect-square
-        after:sl-top-0
-        after:sl-left-0
+        after:sl-top-0.5
+        after:sl-left-0.5
         after:sl-rounded-full
         after:sl-absolute
         after:sl-transition-all
-        after:sl-h-full
-        after:sl-border-2
-        after:sl-border-light-type
-        dark:after:sl-bg-dark-secondary 
-        dark:after:sl-border-dark-type
-        peer-checked:after:sl-left-4
-        peer-checked:after:sl-border-light-quaternary
+        after:sl-duration-200
+        after:sl-h-[calc(100%_-_4px)]
+        dark:after:sl-bg-dark-secondary
+        peer-checked:after:sl-translate-x-[20px]
         peer-checked:after:sl-bg-light-primary
         dark:peer-checked:after:sl-bg-dark-primary
         `
