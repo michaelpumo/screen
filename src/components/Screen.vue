@@ -18,10 +18,10 @@ const {
   maxDepth = Infinity
 } = defineProps<Props>()
 
-const dark = ref(false)
+const dark = ref(true)
 
 onMounted(() => {
-  dark.value = Boolean(localStorage?.['sl-mode'] === 'dark')
+  dark.value = dark.value || Boolean(localStorage?.['sl-mode'] === 'dark')
 })
 
 watch(dark, (value) => {
