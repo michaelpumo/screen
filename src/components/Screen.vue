@@ -33,7 +33,7 @@ watch(dark, (value) => {
   <div
     data-component="Screen"
     :data-mode="dark ? 'dark' : 'light'"
-    class="sl-w-full sl-max-w-max sl-p-1 sl-bg-light-secondary dark:sl-bg-dark-secondary sl-rounded">
+    class="sl-pf sl-w-full sl-max-w-max sl-p-1 sl-bg-light-secondary dark:sl-bg-dark-secondary sl-rounded">
     <header
       class="sl-w-full sl-flex sl-items-center sl-justify-between sl-bg-light-primary dark:sl-bg-dark-primary sl-px-2 sl-py-1.5 sl-rounded-tl sl-rounded-tr sl-gap-2 sl-border-2 sl-border-light-secondary dark:sl-border-dark-secondary sl-border-b-0">
       <p

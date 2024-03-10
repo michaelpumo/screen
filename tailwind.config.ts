@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+import { scopedPreflightStyles } from 'tailwindcss-scoped-preflight'
 
 export default {
   content: ['./index.html', './App.vue', './src/**/*.{js,ts,vue}'],
@@ -58,5 +59,10 @@ export default {
     },
     extend: {}
   },
-  plugins: []
+  plugins: [
+    scopedPreflightStyles({
+      cssSelector: '.sl-pf',
+      mode: 'matched only'
+    })
+  ]
 }
