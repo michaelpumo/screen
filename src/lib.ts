@@ -1,3 +1,3 @@
 import Screen from '@/components/Screen.vue'
 
-export { Screen }
+export default Screen
