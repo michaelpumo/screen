@@ -62,7 +62,7 @@ watch(dark, (value) => {
         label="Mode" />
     </header>
 
-    <main>
+    <main class="sl-overflow-x-auto sl-overscroll-x-contain">
       <Tree
         :log="log"
         :max-length="maxLength"
