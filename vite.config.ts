@@ -28,15 +28,16 @@ export default defineConfig({
     sourcemap: true,
     lib: {
       entry: resolve(__dirname, 'src/lib.ts'),
-      name: 'lib',
-      fileName: (format) => `lib.${format}.js`
+      name: 'screen',
+      fileName: (format) => `screen.${format}.js`
     },
     rollupOptions: {
       external: ['vue'],
       output: {
         globals: {
           vue: 'Vue'
-        }
+        },
+        assetFileNames: 'screen.[ext]'
       }
     }
   }

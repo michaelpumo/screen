@@ -7,7 +7,7 @@
     "access": "public"
   },
   "private": false,
-  "version": "0.0.2",
+  "version": "0.0.3",
   "type": "module",
   "repository": {
     "type": "git",
@@ -22,20 +22,20 @@
     "frontend",
     "web"
   ],
-  "types": "./dist/types/lib.d.ts",
+  "types": "./dist/types/screen.d.ts",
   "files": [
     "dist"
   ],
-  "main": "./dist/lib.umd.js",
-  "module": "./dist/lib.es.js",
+  "main": "./dist/screen.umd.js",
+  "module": "./dist/screen.es.js",
   "exports": {
     ".": {
-      "import": "./dist/lib.es.js",
-      "require": "./dist/lib.umd.js"
+      "import": "./dist/screen.es.js",
+      "require": "./dist/screen.umd.js"
     },
-    "./dist/style.css": {
-      "import": "./dist/style.css",
-      "require": "./dist/style.css"
+    "./dist/screen.css": {
+      "import": "./dist/screen.css",
+      "require": "./dist/screen.css"
     }
   },
   "scripts": {
