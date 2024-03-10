@@ -68,5 +68,19 @@ watch(dark, (value) => {
         :max-length="maxLength"
         :max-depth="maxDepth" />
     </main>
+
+    <footer
+      class="sl-w-full sl-flex sl-items-center sl-justify-between sl-bg-light-primary dark:sl-bg-dark-primary sl-px-2 sl-py-2 sl-rounded-bl sl-rounded-br sl-gap-3 sl-border-2 sl-border-light-secondary dark:sl-border-dark-secondary sl-border-t-0">
+      <p
+        class="sl-text-light-type dark:sl-text-dark-type sl-font-mono sl-text-xs sl-m-0 sl-p-0">
+        Made by
+        <a
+          class="sl-text-light-quaternary dark:sl-text-dark-quaternary"
+          href="https://x.com/michaelpumo"
+          target="_blank">
+          @michaelpumo
+        </a>
+      </p>
+    </footer>
   </div>
 </template>

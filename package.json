@@ -1,9 +1,27 @@
 {
   "name": "@michaelpumo/screen",
-  "private": false,
   "author": "Michael Pumo <hello@michaelpumo.com>",
-  "version": "0.0.1",
+  "description": "A simple Vue component to log the contents of a variable to the screen. Think of it as console.log for the UI.",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "private": false,
+  "version": "0.0.2",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/michaelpumo/screen.git"
+  },
+  "keywords": [
+    "michaelpumo",
+    "screen",
+    "vue",
+    "log",
+    "dump",
+    "frontend",
+    "web"
+  ],
   "types": "./dist/types/lib.d.ts",
   "files": [
     "dist"
