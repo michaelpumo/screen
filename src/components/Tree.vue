@@ -2,12 +2,16 @@
 import { getType, getLength, hasLength, isComplexType } from '@/utils/helpers'
 
 type Props = {
-  log: any
+  log?: any
   maxLength?: number
   maxDepth?: number
 }
 
-const { log, maxLength = Infinity, maxDepth = Infinity } = defineProps<Props>()
+const {
+  log = undefined,
+  maxLength = Infinity,
+  maxDepth = Infinity
+} = defineProps<Props>()
 const dataType = getType(log)
 const dataComplexType = isComplexType(log)
 

@@ -5,14 +5,14 @@ import Switch from '@/components/Switch.vue'
 import '@/assets/css/app.css'
 
 type Props = {
-  log: any
+  log?: any
   label?: string
   maxLength?: number
   maxDepth?: number
 }
 
 const {
-  log,
+  log = undefined,
   label = 'Screen Log',
   maxLength = Infinity,
   maxDepth = Infinity
