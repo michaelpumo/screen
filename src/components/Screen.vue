@@ -35,7 +35,7 @@ watch(dark, (value) => {
     :data-mode="dark ? 'dark' : 'light'"
     class="sl-pf sl-w-full sl-max-w-max sl-p-1 sl-bg-light-secondary dark:sl-bg-dark-secondary sl-rounded">
     <header
-      class="sl-w-full sl-flex sl-items-center sl-justify-between sl-bg-light-primary dark:sl-bg-dark-primary sl-px-2 sl-py-1.5 sl-rounded-tl sl-rounded-tr sl-gap-2 sl-border-2 sl-border-light-secondary dark:sl-border-dark-secondary sl-border-b-0">
+      class="sl-w-full sl-flex sl-items-center sl-justify-between sl-bg-light-primary dark:sl-bg-dark-primary sl-px-2 sl-py-1.5 sl-rounded-tl sl-rounded-tr sl-gap-3 sl-border-2 sl-border-light-secondary dark:sl-border-dark-secondary sl-border-b-0">
       <p
         v-if="label"
         class="sl-text-light-type dark:sl-text-dark-type sl-font-mono sl-text-sm sl-font-bold sl-m-0 sl-p-0">

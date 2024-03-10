@@ -1,5 +1,12 @@
 <script lang="ts" setup>
-import { getType, getLength, hasLength, isComplexType } from '@/utils/helpers'
+import {
+  getType,
+  getLength,
+  hasLength,
+  isComplexType,
+  truncate
+} from '@/utils/helpers'
+import NoticeMaxlength from '@/components/NoticeMaxlength.vue'
 
 type Props = {
   log?: any
@@ -90,7 +97,7 @@ const toggle = (e: Event) => {
     <template v-if="dataComplexType">
       <template v-if="dataType === 'object'">
         <tr
-          v-for="key in Object.keys(log)"
+          v-for="key in Object.keys(truncate(log, maxLength))"
           :key="key">
           <td
             :class="`sl-bg-light-primary dark:sl-bg-dark-primary sl-align-top ${dataComplexType ? 'sl-p-1 sl-m-0 sl-border-2 sl-border-solid sl-border-light-secondary dark:sl-border-dark-secondary' : 'sl-border-none sl-border-0'}`">
@@ -104,9 +111,17 @@ const toggle = (e: Event) => {
           </td>
           <td
             :class="`sl-bg-light-primary dark:sl-bg-dark-primary ${dataComplexType ? 'sl-p-1 sl-m-0 sl-border-2 sl-border-solid sl-border-light-secondary dark:sl-border-dark-secondary' : 'sl-border-none sl-border-0'}`">
-            <Tree :log="log[key]" />
+            <Tree
+              :log="log[key]"
+              :max-length="maxLength"
+              :max-depth="maxDepth" />
           </td>
         </tr>
+
+        <NoticeMaxlength
+          v-if="getLength(log) > maxLength"
+          :value="log"
+          :maxLength="maxLength" />
       </template>
 
       <template v-else-if="dataType === 'set'">
@@ -115,14 +130,17 @@ const toggle = (e: Event) => {
           :key="value">
           <td
             :class="`sl-bg-light-primary dark:sl-bg-dark-primary ${dataComplexType ? 'sl-p-1 sl-m-0 sl-border-2 sl-border-solid sl-border-light-secondary dark:sl-border-dark-secondary' : 'sl-border-none sl-border-0'}`">
-            <Tree :log="value" />
+            <Tree
+              :log="value"
+              :max-length="maxLength"
+              :max-depth="maxDepth" />
           </td>
         </tr>
       </template>
 
       <template v-else>
         <tr
-          v-for="(value, index) of log"
+          v-for="(value, index) of truncate(log, maxLength)"
           :key="index">
           <td
             :class="`sl-bg-light-primary dark:sl-bg-dark-primary sl-align-top ${dataComplexType ? 'sl-p-1 sl-m-0 sl-border-2 sl-border-solid sl-border-light-secondary dark:sl-border-dark-secondary' : 'sl-border-none sl-border-0'}`">
@@ -136,9 +154,17 @@ const toggle = (e: Event) => {
           </td>
           <td
             :class="`sl-bg-light-primary dark:sl-bg-dark-primary sl-align-top ${dataComplexType ? 'sl-p-1 sl-m-0 sl-border-2 sl-border-solid sl-border-light-secondary dark:sl-border-dark-secondary' : 'sl-border-none sl-border-0'}`">
-            <Tree :log="value" />
+            <Tree
+              :log="value"
+              :max-length="maxLength"
+              :max-depth="maxDepth" />
           </td>
         </tr>
+
+        <NoticeMaxlength
+          v-if="getLength(log) > maxLength"
+          :value="log"
+          :maxLength="maxLength" />
       </template>
     </template>
   </table>

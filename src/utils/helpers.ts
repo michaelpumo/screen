@@ -1,4 +1,4 @@
-const getType = (value: any): string =>
+const getType = (value: any) =>
   Object.prototype.toString
     .call(value)
     .replace(/^\[object\s+([a-z]+)\]$/i, '$1')
@@ -27,4 +27,19 @@ const isComplexType = (value: any): boolean => {
   return ['object', 'array', 'map', 'set'].includes(dataType)
 }
 
-export { getType, getLength, hasLength, isComplexType }
+const truncate = (value: any, maxLength: number): any => {
+  const dataType = getType(value)
+
+  if (dataType === 'object') {
+    const entries = Object.entries(value)
+    const sliced = entries.slice(0, maxLength)
+
+    return Object.fromEntries(sliced)
+  } else if (dataType === 'array') {
+    return value.length > maxLength ? value.slice(0, maxLength) : value
+  }
+
+  return value
+}
+
+export { getType, getLength, hasLength, isComplexType, truncate }

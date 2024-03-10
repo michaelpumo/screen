@@ -8,7 +8,7 @@ const family = {
   children: false,
   about: {
     job: 'Web Developer',
-    hobbies: ['hiking', 'development', 'cooking'],
+    hobbies: ['hiking', 'development', 'cooking', 'guitar', 'crypto'],
     tagline: `Hello. I’m a freelance user interface developer. My name’s Michael Pumo. I craft user interfaces using modern frontend web technologies such as Vue and Nuxt.`
   },
   siblings: [
