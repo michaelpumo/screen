@@ -1,24 +1,20 @@
-<div style="text-align: center; font-size: 40px; margin: 0 0 40px 0;">
-  📺 🪵
-</div>
-
-<h1 style="margin: 0 auto; text-align: center; font-family: monospace;">
+<h1 align="center">
 &lt;Screen /&gt;
 </h1>
 
-<p style="max-width: 60ch; text-align: center; text-wrap: balance; margin: 0 auto 40px auto;">A simple Vue component to log the contents of a variable to the screen. Think of it as <code>screen.log</code> for the UI.</p>
+<p align="center" style="max-width: 60ch; text-align: center; text-wrap: balance;">A simple Vue component to log the contents of a variable to the screen. Think of it as <code>console.log</code> for the UI.</p>
 
 #### Install
 
 ```bash
-$ npm i @michaelpumo/Screen --save-dev
+$ npm i @michaelpumo/screen --save-dev
 ```
 
 #### Example
 
 ```html
 <script lang="ts" setup>
-import { Screen } from '@michaelpumo/Screen'
+import Screen from '@michaelpumo/screen'
 
 const family = {
   name: 'Michael',
