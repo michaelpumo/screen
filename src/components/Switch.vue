@@ -55,12 +55,12 @@ const checked = computed(
 
     <span
       :class="[
-        'sl-relative sl-block sl-w-10 sl-h-5 sl-rounded-3xl sl-transition-colors sl-duration-200 peer-checked:sl-bg-light-quaternary sl-bg-light-type dark:sl-bg-dark-type dark:peer-checked:sl-bg-dark-quaternary',
+        'sl-relative sl-block sl-w-10 sl-h-5 sl-rounded-3xl sl-transition-colors sl-duration-200 peer-checked:sl-bg-quaternary sl-bg-type',
         `
         after:sl-content-['']
         after:sl-block
         after:sl-box-border
-        after:sl-bg-light-secondary 
+        after:sl-bg-secondary 
         after:sl-w-auto
         after:sl-aspect-square
         after:sl-top-0.5
@@ -70,10 +70,8 @@ const checked = computed(
         after:sl-transition-all
         after:sl-duration-200
         after:sl-h-[calc(100%_-_4px)]
-        dark:after:sl-bg-dark-secondary
         peer-checked:after:sl-translate-x-[20px]
-        peer-checked:after:sl-bg-light-primary
-        dark:peer-checked:after:sl-bg-dark-primary
+        peer-checked:after:sl-bg-primary
         `
       ]" />
 

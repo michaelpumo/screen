@@ -2,38 +2,110 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --sl-light-muted: #6782bb;
-  --sl-light-type: #2c2e44;
-  --sl-light-primary: #fff;
-  --sl-light-secondary: #f4f4fb;
-  --sl-light-tertiary: #55bdf7;
-  --sl-light-quaternary: #42b883;
+@layer base {
+  :root {
+    /* Atom One */
+    --sl-slate: #a0a1a7;
+    --sl-cyan: #0184bb;
+    --sl-green: #50a14f;
+    --sl-orange: #d19a66;
+    --sl-pink: #c678dd;
+    --sl-purple: #a626a4;
+    --sl-red: #e45649;
+    --sl-yellow: #e5c07b;
 
-  --sl-dark-muted: #6782bb;
-  --sl-dark-type: #dddee9;
-  --sl-dark-primary: #2c2e44;
-  --sl-dark-secondary: #1e202f;
-  --sl-dark-tertiary: #55bdf7;
-  --sl-dark-quaternary: #42b883;
+    /* Atom One + Custom */
+    --sl-lilac: #ad82cb;
+    --sl-mint: #77e89d;
+    --sl-gold: #ffaa00;
+    --sl-custard: #ffae57;
+    --sl-magenta: #ff00aa;
+    --sl-terracotta: #ff6e67;
+    --sl-sky: #00aaff;
+    --sl-royal: #aa00ff;
+    --sl-rose: #ff8cf0;
+    --sl-indigo: #6f6fff;
 
-  --sl-array: #bd93f9;
-  --sl-bigint: #ad82cb;
-  --sl-boolean: #f1fa8c;
-  --sl-comment: #6272a4;
-  --sl-date: #ffae57;
-  --sl-function: #77e89d;
-  --sl-htmlbodyelement: #6f6fff;
-  --sl-location: #ff8cf0;
-  --sl-map: #00aaff;
-  --sl-null: #ff5555;
-  --sl-number: #50fa7b;
-  --sl-object: #ff79c6;
-  --sl-regexp: #f1fa8c;
-  --sl-set: #aa00ff;
-  --sl-string: #ffb86c;
-  --sl-symbol: #ff6e67;
-  --sl-undefined: #8be9fd;
-  --sl-weakmap: #ffaa00;
-  --sl-weakset: #ff00aa;
+    /* Foundational Colours */
+    --sl-muted: #6782bb;
+    --sl-type: #383a42;
+    --sl-primary: #fff;
+    --sl-secondary: hsl(233, 22%, 95%);
+    --sl-tertiary: #55bdf7;
+    --sl-quaternary: #42b883;
+
+    /* Token Colours */
+    --sl-array: var(--sl-purple);
+    --sl-bigint: var(--sl-lilac);
+    --sl-boolean: var(--sl-yellow);
+    --sl-comment: var(--sl-slate);
+    --sl-date: var(--sl-custard);
+    --sl-function: var(--sl-mint);
+    --sl-htmlbodyelement: var(--sl-indigo);
+    --sl-location: var(--sl-rose);
+    --sl-map: var(--sl-sky);
+    --sl-null: var(--sl-red);
+    --sl-number: var(--sl-green);
+    --sl-object: var(--sl-pink);
+    --sl-regexp: var(--sl-yellow);
+    --sl-set: var(--sl-royal);
+    --sl-string: var(--sl-orange);
+    --sl-symbol: var(--sl-terracotta);
+    --sl-undefined: var(--sl-cyan);
+    --sl-weakmap: var(--sl-gold);
+    --sl-weakset: var(--sl-magenta);
+
+    [data-mode='dark'] {
+      /* Dracula */
+      --sl-slate: #6272a4;
+      --sl-cyan: #8be9fd;
+      --sl-green: #50fa7b;
+      --sl-orange: #ffb86c;
+      --sl-pink: #ff79c6;
+      --sl-purple: #bd93f9;
+      --sl-red: #ff5555;
+      --sl-yellow: #f1fa8c;
+
+      /* Dracula + Custom */
+      --sl-lilac: #ad82cb;
+      --sl-mint: #77e89d;
+      --sl-gold: #ffaa00;
+      --sl-custard: #ffae57;
+      --sl-magenta: #ff00aa;
+      --sl-terracotta: #ff6e67;
+      --sl-sky: #00aaff;
+      --sl-royal: #aa00ff;
+      --sl-rose: #ff8cf0;
+      --sl-indigo: #6f6fff;
+
+      /* Foundational Colours */
+      --sl-muted: #6782bb;
+      --sl-type: #dddee9;
+      --sl-primary: #2c2e44;
+      --sl-secondary: #1e202f;
+      --sl-tertiary: #55bdf7;
+      --sl-quaternary: #42b883;
+
+      /* Token Colours */
+      --sl-array: var(--sl-purple);
+      --sl-bigint: var(--sl-lilac);
+      --sl-boolean: var(--sl-yellow);
+      --sl-comment: var(--sl-slate);
+      --sl-date: var(--sl-custard);
+      --sl-function: var(--sl-mint);
+      --sl-htmlbodyelement: var(--sl-indigo);
+      --sl-location: var(--sl-rose);
+      --sl-map: var(--sl-sky);
+      --sl-null: var(--sl-red);
+      --sl-number: var(--sl-green);
+      --sl-object: var(--sl-pink);
+      --sl-regexp: var(--sl-yellow);
+      --sl-set: var(--sl-royal);
+      --sl-string: var(--sl-orange);
+      --sl-symbol: var(--sl-terracotta);
+      --sl-undefined: var(--sl-cyan);
+      --sl-weakmap: var(--sl-gold);
+      --sl-weakset: var(--sl-magenta);
+    }
+  }
 }

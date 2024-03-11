@@ -21,7 +21,7 @@ const {
 const dark = ref(true)
 
 onMounted(() => {
-  dark.value = dark.value || Boolean(localStorage?.['sl-mode'] === 'dark')
+  dark.value = Boolean(localStorage?.['sl-mode'] !== 'light') ?? dark.value
 })
 
 watch(dark, (value) => {
@@ -33,17 +33,17 @@ watch(dark, (value) => {
   <div
     data-component="Screen"
     :data-mode="dark ? 'dark' : 'light'"
-    class="sl-pf sl-w-full sl-max-w-max sl-p-1 sl-bg-light-secondary dark:sl-bg-dark-secondary sl-rounded">
+    class="sl-pf sl-w-full sl-max-w-max sl-p-1 sl-bg-secondary sl-rounded">
     <header
-      class="sl-w-full sl-flex sl-items-center sl-justify-between sl-bg-light-primary dark:sl-bg-dark-primary sl-px-2 sl-py-1.5 sl-rounded-tl sl-rounded-tr sl-gap-3 sl-border-2 sl-border-light-secondary dark:sl-border-dark-secondary sl-border-b-0">
+      class="sl-w-full sl-flex sl-items-center sl-justify-between sl-bg-primary sl-px-2 sl-py-1.5 sl-rounded-tl sl-rounded-tr sl-gap-3 sl-border-2 sl-border-secondary sl-border-b-0">
       <p
         v-if="label"
-        class="sl-text-light-type dark:sl-text-dark-type sl-font-mono sl-text-sm sl-font-bold sl-m-0 sl-p-0">
+        class="sl-text-type sl-font-mono sl-text-sm sl-font-bold sl-m-0 sl-p-0">
         {{ label }}
       </p>
 
       <ul
-        class="sl-flex sl-m-0 sl-p-0 sl-ml-auto sl-text-light-muted dark:sl-text-dark-muted sl-font-mono sl-text-xs sl-gap-1">
+        class="sl-flex sl-m-0 sl-p-0 sl-ml-auto sl-text-muted sl-font-mono sl-text-xs sl-gap-1">
         <li
           v-if="maxLength !== Infinity"
           class="after:sl-content-['|'] after:sl-opacity-50 after:sl-ml-1">
@@ -70,12 +70,11 @@ watch(dark, (value) => {
     </main>
 
     <footer
-      class="sl-w-full sl-flex sl-items-center sl-justify-between sl-bg-light-primary dark:sl-bg-dark-primary sl-px-2 sl-py-2 sl-rounded-bl sl-rounded-br sl-gap-3 sl-border-2 sl-border-light-secondary dark:sl-border-dark-secondary sl-border-t-0">
-      <p
-        class="sl-text-light-type dark:sl-text-dark-type sl-font-mono sl-text-xs sl-m-0 sl-p-0">
+      class="sl-w-full sl-flex sl-items-center sl-justify-between sl-bg-primary sl-px-2 sl-py-2 sl-rounded-bl sl-rounded-br sl-gap-3 sl-border-2 sl-border-secondary sl-border-t-0">
+      <p class="sl-text-type sl-font-mono sl-text-xs sl-m-0 sl-p-0">
         Made by
         <a
-          class="sl-text-light-quaternary dark:sl-text-dark-quaternary"
+          class="sl-text-quaternary"
           href="https://x.com/michaelpumo"
           target="_blank">
           @michaelpumo

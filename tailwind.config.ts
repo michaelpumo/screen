@@ -16,22 +16,12 @@ export default {
     },
     colors: {
       transparent: 'transparent',
-      light: {
-        muted: 'var(--sl-light-muted)',
-        type: 'var(--sl-light-type)',
-        primary: 'var(--sl-light-primary)',
-        secondary: 'var(--sl-light-secondary)',
-        tertiary: 'var(--sl-light-tertiary)',
-        quaternary: 'var(--sl-light-quaternary)'
-      },
-      dark: {
-        muted: 'var(--sl-dark-muted)',
-        type: 'var(--sl-dark-type)',
-        primary: 'var(--sl-dark-primary)',
-        secondary: 'var(--sl-dark-secondary)',
-        tertiary: 'var(--sl-dark-tertiary)',
-        quaternary: 'var(--sl-dark-quaternary)'
-      },
+      muted: 'var(--sl-muted)',
+      type: 'var(--sl-type)',
+      primary: 'var(--sl-primary)',
+      secondary: 'var(--sl-secondary)',
+      tertiary: 'var(--sl-tertiary)',
+      quaternary: 'var(--sl-quaternary)',
       token: {
         array: 'var(--sl-array)',
         bigint: 'var(--sl-bigint)',
