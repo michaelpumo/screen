@@ -8,6 +8,16 @@
 
 <p align="center">A simple Vue component to log the contents of a variable to the screen.<br>Think of it as <code>console.log</code> for the UI.</p>
 
+<br>
+
+<p align="center">
+  <picture>
+    <img alt="Screen" src="https://github.com/michaelpumo/screen/assets/4269460/eb443cd8-49d4-436c-a5ee-753dbf866816" width="605">
+  </picture>
+</p>
+
+<br>
+
 #### Install
 
 ```bash
