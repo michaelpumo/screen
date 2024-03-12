@@ -8,6 +8,26 @@
 
 <p align="center">A simple Vue component to log the contents of a variable to the screen.<br>Think of it as <code>console.log</code> for the UI.</p>
 
+<br>
+
+<p align="center">
+  <picture>
+    <img alt="Screen" src="https://github.com/michaelpumo/screen/assets/4269460/eb443cd8-49d4-436c-a5ee-753dbf866816" width="605">
+  </picture>
+</p>
+
+<br>
+
+#### Features
+- 💻 Log simple or complex values to the screen, in-place.
+- 📋 See the types, lengths and structure of your data.
+- 🌤️ Easily switch between light and dark modes (based on Dracula and Atom One Light themes).
+- 👻 Expand and collapse objects and arrays.
+- 🏷️ Custom label to make logging easier.
+- ✨ Ability to set max-length and max-depth on the arrays and objects you want to display.
+- 💥 Highlight outline to nested data, on hover.
+- 🤗 Rendered into a semantic HTML `<table>`.
+
 #### Install
 
 ```bash
@@ -36,27 +56,20 @@ export default defineNuxtConfig({
 <script lang="ts" setup>
 import Screen from '@michaelpumo/screen'
 
-const family = {
+const profile = {
   name: 'Michael',
   age: 40,
   children: false,
-  siblings: [
-    {
-      name: 'Vincent',
-      age: 43,
-      children: true
-    },
-    {
-      name: 'Laura',
-      age: 38,
-      children: true
-    }
-  ]
+  about: {
+    job: 'Web Developer',
+    hobbies: ['hiking', 'cooking', 'guitar'],
+    tagline: `I'm a freelance user interface developer.`
+  }
 }
 </script>
 
 <template>
-  <Screen :log="family" />
+  <Screen :log="profile" label="My Profile" />
 </template>
 ```
 
