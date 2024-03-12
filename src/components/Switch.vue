@@ -54,7 +54,7 @@ const checked = computed(
       @change="onChange" />
 
     <span
-      class="'sl-relative sl-block sl-w-10 sl-h-5 sl-rounded-3xl sl-transition-colors sl-duration-200 peer-checked:sl-bg-quaternary sl-bg-type after:sl-content-[''] after:sl-block after:sl-box-border after:sl-bg-secondary after:sl-w-auto after:sl-aspect-square after:sl-top-0.5 after:sl-left-0.5 after:sl-rounded-full after:sl-absolute after:sl-transition-all after:sl-duration-200 after:sl-h-[calc(100%_-_4px)] peer-checked:after:sl-translate-x-[20px] peer-checked:after:sl-bg-primary" />
+      class="sl-relative sl-block sl-w-10 sl-h-5 sl-rounded-3xl sl-transition-colors sl-duration-200 peer-checked:sl-bg-quaternary sl-bg-type after:sl-content-[''] after:sl-block after:sl-box-border after:sl-bg-secondary after:sl-w-auto after:sl-aspect-square after:sl-top-0.5 after:sl-left-0.5 after:sl-rounded-full after:sl-absolute after:sl-transition-all after:sl-duration-200 after:sl-h-[calc(100%_-_4px)] peer-checked:after:sl-translate-x-[20px] peer-checked:after:sl-bg-primary" />
 
     <span
       v-if="label"
