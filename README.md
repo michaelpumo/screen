@@ -95,6 +95,15 @@ npm i @michaelpumo/screen --save-dev
     },
   });
   ```
+
+  Make sure you have auto component import enabled in your `nuxt.config.{js,ts}` file too:
+  
+  ```typescript
+  export default defineNuxtConfig({
+    css: ['@michaelpumo/screen/dist/screen.css'],
+    components: true,
+  });
+  ```
  
   **Note** If you do not want to auto import this component (though it's recommended) then you may need to wrap `<Screen />` into a `<ClientOnly>` tag to avoid warnings with SSR:
 
@@ -104,15 +113,6 @@ npm i @michaelpumo/screen --save-dev
       <Screen :log="profile" label="My Profile" />
     </ClientOnly>
   </template>
-  ```
-  
-  Make sure you have auto component import enabled in your `nuxt.config.{js,ts}` file too:
-  
-  ```typescript
-  export default defineNuxtConfig({
-    css: ['@michaelpumo/screen/dist/screen.css'],
-    components: true,
-  });
   ```
 </details>
 
