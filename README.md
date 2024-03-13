@@ -38,7 +38,7 @@
 #### Install
 
 ```bash
-$ npm i @michaelpumo/screen --save-dev
+npm i @michaelpumo/screen --save-dev
 ```
 
 #### Frameworks
