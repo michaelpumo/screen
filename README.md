@@ -80,9 +80,20 @@ $ npm i @michaelpumo/screen --save-dev
       addComponent({
         name: 'Screen',
         filePath: '@michaelpumo/screen',
+        mode: 'client',
       });
     },
   });
+  ```
+ 
+  **Note** If you do not want to auto import this component (though it's recommended) then you may need to wrap `<Screen />` into a `<ClientOnly>` tag to avoid warnings with SSR:
+
+  ```html
+  <template>
+    <ClientOnly>
+      <Screen :log="profile" label="My Profile" />
+    </ClientOnly>
+  </template>
   ```
   
   Make sure you have auto component import enabled in your `nuxt.config.{js,ts}` file too:
