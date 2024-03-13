@@ -48,7 +48,7 @@ $ npm i @michaelpumo/screen --save-dev
 
   #### Vue Demo
   <p>
-    <a href="https://stackblitz.com/edit/screen-demo-vue?file=src%2FApp.vue">
+    <a href="https://stackblitz.com/edit/screen-demo-vue?file=src%2FApp.vue" target="_blank">
       <img src="https://developer.stackblitz.com/img/open_in_stackblitz.svg" alt="StackBlitz Demo Vue" width="160">
     </a>
   </p>
@@ -65,7 +65,7 @@ $ npm i @michaelpumo/screen --save-dev
 
   #### Nuxt Demo
   <p>
-    <a href="https://stackblitz.com/edit/screen-demo-nuxt?file=app.vue">
+    <a href="https://stackblitz.com/edit/screen-demo-nuxt?file=app.vue" target="_blank">
       <img src="https://developer.stackblitz.com/img/open_in_stackblitz.svg" alt="StackBlitz Demo Nuxt" width="160">
     </a>
   </p>
