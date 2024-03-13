@@ -23,7 +23,7 @@ export default defineConfig({
     }
   },
   build: {
-    // ssr: true,
+    ssr: false,
     target: 'esnext',
     sourcemap: true,
     lib: {
