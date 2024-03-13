@@ -57,6 +57,32 @@ export default defineNuxtConfig({
 });
 ```
 
+###### Nuxt Auto-Import
+It might be useful for you to have Nuxt auto import the component so that you can use it freely around your application without hassle. You can do this by creating a module that imports it for you automatically.
+
+*modules/screen.ts*
+```typescript
+import { addComponent, defineNuxtModule } from '@nuxt/kit';
+
+export default defineNuxtModule({
+  setup() {
+    addComponent({
+      name: 'Screen',
+      filePath: '@michaelpumo/screen',
+    });
+  },
+});
+```
+
+Make sure you have auto component import enabled in your `nuxt.config` too:
+
+```typescript
+export default defineNuxtConfig({
+  css: ['@michaelpumo/screen/dist/screen.css'],
+  components: true,
+});
+```
+
 #### Example Usage
 
 ```html
