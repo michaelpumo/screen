@@ -28,6 +28,13 @@
 - 💥 Highlight outline to nested data, on hover.
 - 🤗 Rendered into a semantic HTML `<table>`.
 
+<br>
+
+> [!IMPORTANT]  
+> This project is under active development and may develop significant changes. Early users greatly appreciated for feedback, advice and suggestions 🙏
+
+<br>
+
 #### Install
 
 ```bash
