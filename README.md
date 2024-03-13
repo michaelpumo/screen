@@ -46,7 +46,7 @@ $ npm i @michaelpumo/screen --save-dev
 <details>
   <summary><img alt="Vue Setup" src="https://github.com/michaelpumo/screen/assets/4269460/33cd99e4-c85c-416b-8e50-49de380f96d0" width="16" valign="middle"> Vue Setup</summary>
 
-  #### Demo
+  #### Vue Demo
   <p>
     <a href="https://stackblitz.com/edit/screen-demo-vue?file=src%2FApp.vue">
       <img src="https://developer.stackblitz.com/img/open_in_stackblitz.svg" alt="StackBlitz Demo Vue" width="160">
@@ -63,7 +63,7 @@ $ npm i @michaelpumo/screen --save-dev
 <details>
   <summary><img alt="Nuxt Setup" src="https://github.com/michaelpumo/screen/assets/4269460/5d2b481c-d2b3-41f1-8e70-db07ce6588bb" width="16" valign="middle"> Nuxt Setup</summary>
 
-  #### Demo
+  #### Nuxt Demo
   <p>
     <a href="https://stackblitz.com/edit/screen-demo-nuxt?file=app.vue">
       <img src="https://developer.stackblitz.com/img/open_in_stackblitz.svg" alt="StackBlitz Demo Nuxt" width="160">
