@@ -135,7 +135,7 @@ const profile = {
 | log | any | undefined | The variable to log to the screen. |
 | label | string | 'Screen Log' | The label to display at the top of the screen. |
 | max-length | number | Infinity | The maximum length of arrays and object keys to display. |
-| max-depth | number | Infinity | The maximum depth of objects to display. |
+| max-depth | number | Infinity | The maximum depth of the tree to display. |
 
 #### Motivation
 I simply wanted something that functioned better than a basic `<pre>` tag for logging to the screen. 🤷🏻‍♂️ Feel free to share your thoughts on how this concept can be improved.
