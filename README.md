@@ -31,7 +31,7 @@
 <br>
 
 > [!IMPORTANT]  
-> This project is under active development and may develop significant changes. Early users greatly appreciated for feedback, advice and suggestions 🙏
+> This project is under active development and may go through significant changes. Early users greatly appreciated for feedback, advice and suggestions 🙏
 
 <br>
 
