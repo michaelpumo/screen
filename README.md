@@ -6,7 +6,7 @@
   </picture>
 </p>
 
-<p align="center">A simple Vue component to log the contents of a variable to the screen.<br>Think of it as <code>console.log</code> for the UI.</p>
+<p align="center">A simple component to log the contents of a variable to the screen.<br>Think of it as <code>console.log</code> for the UI.</p>
 
 <br>
 
@@ -116,7 +116,13 @@ npm i @michaelpumo/screen --save-dev
   ```
 </details>
 
-#### Example Usage
+<details>
+  <summary><img alt="React Setup" src="https://github.com/michaelpumo/screen/assets/4269460/278d3f61-b47d-4841-86c0-41f0717bae8c" width="16" valign="middle"> React Setup</summary>
+
+  Coming soon.
+</details>
+
+#### Example Usage (Vue + Nuxt)
 
 ```html
 <script lang="ts" setup>
