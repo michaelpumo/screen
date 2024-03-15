@@ -52,9 +52,10 @@ const calculatedDepth = currentDepth + 1
     class="sl-w-max sl-text-sm sl-text-type sl-font-mono sl-border-collapse sl-border-spacing-0 sl-outline-[rgba(0,0,0,0)] sl-rounded sl-outline sl-outline-1 hover:sl-outline-tertiary sl-outline-offset-1 sl-transition-all sl-duration-200">
     <template v-if="calculatedDepth <= maxDepth">
       <tr @click="toggle">
-        <td
+        <Component
+          :is="dataComplexType ? 'th' : 'td'"
           v-if="dataType !== 'set'"
-          :class="`sl-bg-primary sl-align-top ${dataComplexType ? 'sl-p-1 sl-m-0 sl-border-2 sl-border-solid sl-border-secondary' : 'sl-border-none sl-border-0'}`">
+          :class="`sl-font-normal sl-text-left sl-bg-primary sl-align-top ${dataComplexType ? 'sl-p-1 sl-m-0 sl-border-2 sl-border-solid sl-border-secondary' : 'sl-border-none sl-border-0'}`">
           <template v-if="dataComplexType">
             <div
               class="sl-select-none sl-cursor-pointer sl-bg-secondary sl-px-1.5 sl-py-0.5 sl-rounded sl-text-muted">
@@ -69,10 +70,11 @@ const calculatedDepth = currentDepth + 1
               </div>
             </div>
           </template>
-        </td>
+        </Component>
 
-        <td
-          :class="`sl-bg-primary ${dataComplexType ? 'sl-p-1 sl-m-0 sl-border-2 sl-border-solid sl-border-secondary' : 'sl-border-none sl-border-0'}`">
+        <Component
+          :is="dataComplexType ? 'th' : 'td'"
+          :class="`sl-font-normal sl-text-left sl-bg-primary ${dataComplexType ? 'sl-p-1 sl-m-0 sl-border-2 sl-border-solid sl-border-secondary' : 'sl-border-none sl-border-0'}`">
           <template v-if="dataComplexType">
             <div
               :class="`sl-flex sl-items-center sl-justify-start sl-gap-1.5 sl-bg-secondary sl-px-1.5 sl-py-0.5 sl-rounded sl-select-none sl-cursor-pointer sl-text-token-${dataType}`">
@@ -97,7 +99,7 @@ const calculatedDepth = currentDepth + 1
               </span>
             </div>
           </template>
-        </td>
+        </Component>
       </tr>
 
       <template v-if="dataComplexType">
