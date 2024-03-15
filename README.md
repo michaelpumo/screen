@@ -119,7 +119,8 @@ npm i @michaelpumo/screen --save-dev
 <details>
   <summary><img alt="React Setup" src="https://github.com/michaelpumo/screen/assets/4269460/278d3f61-b47d-4841-86c0-41f0717bae8c" width="16" valign="middle"> React Setup</summary>
 
-  Coming soon.
+  #### React Demo
+  There is no React port yet. Coming soon.
 </details>
 
 #### Example Usage (Vue + Nuxt)
