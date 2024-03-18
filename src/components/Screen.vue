@@ -25,8 +25,24 @@ onMounted(() => {
 })
 
 watch(dark, (value) => {
-  localStorage['sl-mode'] = value ? 'dark' : 'light'
+  if (!window?.localStorage) return
+  window.localStorage['sl-mode'] = value ? 'dark' : 'light'
 })
+
+const labelSanitized =
+  typeof label === 'string' && label?.trim().length
+    ? label.trim()
+    : 'Screen Log'
+
+const maxLengthSanitized =
+  typeof maxLength === 'number' && maxLength > 0 && maxLength !== Infinity
+    ? maxLength
+    : Infinity
+
+const maxDepthSanitized =
+  typeof maxDepth === 'number' && maxDepth > 0 && maxDepth !== Infinity
+    ? maxDepth
+    : Infinity
 </script>
 
 <template>
@@ -37,22 +53,24 @@ watch(dark, (value) => {
     <header
       class="sl-w-full sl-flex sl-items-center sl-justify-between sl-bg-primary sl-px-2 sl-py-1.5 sl-rounded-tl sl-rounded-tr sl-gap-3 sl-border-2 sl-border-secondary sl-border-b-0">
       <p
-        v-if="label"
+        v-if="labelSanitized"
+        data-test-label
         class="sl-text-type sl-font-mono sl-text-sm sl-font-bold sl-m-0 sl-p-0">
-        {{ label }}
+        {{ labelSanitized }}
       </p>
 
       <ul
+        data-test-options
         class="sl-flex sl-m-0 sl-p-0 sl-ml-auto sl-text-muted sl-font-mono sl-text-xs sl-gap-1">
         <li
-          v-if="maxLength !== Infinity"
+          v-if="maxLengthSanitized !== Infinity"
           class="after:sl-content-['|'] after:sl-opacity-50 after:sl-ml-1">
-          Max Length: {{ maxLength }}
+          Max Length: {{ maxLengthSanitized }}
         </li>
         <li
-          v-if="maxDepth !== Infinity"
+          v-if="maxDepthSanitized !== Infinity"
           class="after:sl-content-['|'] after:sl-opacity-50 after:sl-ml-1">
-          Max Depth: {{ maxDepth }}
+          Max Depth: {{ maxDepthSanitized }}
         </li>
         <li>{{ dark ? 'Dark' : 'Light' }}</li>
       </ul>
@@ -62,14 +80,17 @@ watch(dark, (value) => {
         label="Mode" />
     </header>
 
-    <main class="sl-overflow-x-auto sl-overscroll-x-contain">
+    <main
+      data-test-main
+      class="sl-overflow-x-auto sl-overscroll-x-contain">
       <Tree
         :log="log"
-        :max-length="maxLength"
-        :max-depth="maxDepth" />
+        :max-length="maxLengthSanitized"
+        :max-depth="maxDepthSanitized" />
     </main>
 
     <footer
+      data-test-footer
       class="sl-w-full sl-flex sl-items-center sl-justify-between sl-bg-primary sl-px-2 sl-py-2 sl-rounded-bl sl-rounded-br sl-gap-3 sl-border-2 sl-border-secondary sl-border-t-0">
       <p class="sl-text-type sl-font-mono sl-text-xs sl-m-0 sl-p-0">
         Made by
