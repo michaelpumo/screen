@@ -5,7 +5,7 @@ import Switch from '@/components/Switch.vue'
 import '@/assets/css/app.css'
 
 type Props = {
-  log?: any
+  log?: unknown
   label?: string
   maxLength?: number
   maxDepth?: number

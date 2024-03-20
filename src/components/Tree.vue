@@ -10,7 +10,7 @@ import NoticeMaxDepth from '@/components/NoticeMaxDepth.vue'
 import NoticeMaxLength from '@/components/NoticeMaxLength.vue'
 
 type Props = {
-  log?: any
+  log?: unknown
   maxLength?: number
   maxDepth?: number
   currentDepth?: number
@@ -78,7 +78,11 @@ const calculatedDepth = currentDepth + 1
           <template v-if="dataComplexType">
             <div
               :class="`sl-flex sl-items-center sl-justify-start sl-gap-1.5 sl-bg-secondary sl-px-1.5 sl-py-0.5 sl-rounded sl-select-none sl-cursor-pointer sl-text-token-${dataType}`">
-              {{ dataType === 'symbol' ? log.description : dataType }}
+              {{
+                typeof log === 'symbol' && dataType === 'symbol'
+                  ? log.description
+                  : dataType
+              }}
 
               <span
                 v-if="hasLength(dataType)"
@@ -103,14 +107,15 @@ const calculatedDepth = currentDepth + 1
       </tr>
 
       <template v-if="dataComplexType">
-        <template v-if="dataType === 'object'">
+        <template
+          v-if="log && typeof log === 'object' && dataType === 'object'">
           <tr
             v-for="key in Object.keys(truncate(log, maxLength))"
             :key="key">
             <td
               :class="`sl-bg-primary sl-align-top ${dataComplexType ? 'sl-p-1 sl-m-0 sl-border-2 sl-border-solid sl-border-secondary' : 'sl-border-none sl-border-0'}`">
               <div
-                :class="`sl-h-full sl-sticky ${['object', 'array'].includes(getType(log[key])) ? 'sl-py-1.5 sl-top-0' : 'sl-top-1.5'}`">
+                :class="`sl-h-full sl-sticky ${['object', 'array'].includes(getType((log as Record<string, unknown>)[key])) ? 'sl-py-1.5 sl-top-0' : 'sl-top-1.5'}`">
                 <div class="sl-px-1.5 sl-py-0.5 sl-text-muted">
                   {{ key }}
                 </div>
@@ -119,7 +124,7 @@ const calculatedDepth = currentDepth + 1
             <td
               :class="`sl-bg-primary ${dataComplexType ? 'sl-p-1 sl-m-0 sl-border-2 sl-border-solid sl-border-secondary' : 'sl-border-none sl-border-0'}`">
               <Tree
-                :log="log[key]"
+                :log="(log as Record<string, unknown>)[key]"
                 :max-length="maxLength"
                 :max-depth="maxDepth"
                 :current-depth="calculatedDepth" />
@@ -129,7 +134,7 @@ const calculatedDepth = currentDepth + 1
           <NoticeMaxLength
             v-if="getLength(log) > maxLength"
             :value="log"
-            :maxLength="maxLength" />
+            :max-length="maxLength" />
         </template>
 
         <template v-else-if="dataType === 'set'">
@@ -173,13 +178,13 @@ const calculatedDepth = currentDepth + 1
           <NoticeMaxLength
             v-if="getLength(log) > maxLength"
             :value="log"
-            :maxLength="maxLength" />
+            :max-length="maxLength" />
         </template>
       </template>
     </template>
 
     <template v-else>
-      <NoticeMaxDepth :maxDepth="maxDepth" />
+      <NoticeMaxDepth :max-depth="maxDepth" />
     </template>
   </table>
 </template>

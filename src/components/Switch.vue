@@ -9,7 +9,7 @@ interface Props {
 
 const { id = 'switch', label = 'Switch', value = '' } = defineProps<Props>()
 
-const modelValue = defineModel()
+const modelValue = defineModel<string | boolean>()
 
 const getValue = (target: HTMLInputElement | HTMLFormElement) => {
   const model = modelValue.value

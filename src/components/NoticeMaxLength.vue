@@ -2,7 +2,7 @@
 import { getLength } from '@/utils/helpers'
 
 type Props = {
-  value?: [] | {}
+  value?: unknown
   maxLength?: number
 }
 
