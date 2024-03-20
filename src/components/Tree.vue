@@ -93,8 +93,8 @@ const calculatedDepth = currentDepth + 1
           </template>
           <template v-else>
             <div
-              class="sl-flex sl-items-center sl-justify-start sl-gap-1.5 sl-bg-secondary sl-text-type sl-px-1.5 sl-py-0.5 sl-rounded sl-text-balance sl-max-w-[60ch] sl-max-h-20 sl-overflow-y-auto sl-overscroll-contain">
-              {{ log ?? '(empty)' }}
+              class="sl-relative sl-flex sl-items-center sl-justify-start sl-gap-1.5 sl-bg-secondary sl-px-1.5 sl-py-0.5 sl-rounded sl-text-balance sl-max-w-[60ch] sl-max-h-20 sl-overflow-y-auto sl-overscroll-contain">
+              <span class="sl-my-auto">{{ log ?? '(empty)' }}</span>
 
               <span
                 v-if="hasLength(dataType)"

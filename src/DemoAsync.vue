@@ -1,9 +1,10 @@
 <script lang="ts" setup>
 import Screen from '@/components/Screen.vue'
 
-const endpoint = 'https://jsonplaceholder.org/comments'
+const endpoint = 'https://jsonplaceholder.org/users'
 const response = await fetch(endpoint)
-const data = await response.json()
+const json = await response.json()
+const data = json
 </script>
 
 <template>
