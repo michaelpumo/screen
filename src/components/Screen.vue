@@ -49,7 +49,7 @@ const maxDepthSanitized =
   <div
     data-component="Screen"
     :data-mode="dark ? 'dark' : 'light'"
-    class="sl-pf sl-w-full sl-max-w-max sl-p-1 sl-bg-secondary sl-rounded">
+    class="sl-pf sl-w-full sl-max-w-max sl-p-1 sl-bg-secondary sl-rounded sl-antialiased">
     <header
       class="sl-w-full sl-flex sl-items-center sl-justify-between sl-bg-primary sl-px-2 sl-py-1.5 sl-rounded-tl sl-rounded-tr sl-gap-3 sl-border-2 sl-border-secondary sl-border-b-0">
       <p
