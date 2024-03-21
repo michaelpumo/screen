@@ -49,7 +49,7 @@ const calculatedDepth = currentDepth + 1
 <template>
   <table
     data-component="Tree"
-    class="sl-w-max sl-text-sm sl-text-type sl-font-mono sl-border-collapse sl-border-spacing-0 sl-outline-[rgba(0,0,0,0)] sl-rounded sl-outline sl-outline-1 hover:sl-outline-tertiary sl-outline-offset-1 sl-transition-all sl-duration-200">
+    class="sl-w-max sl-text-sm sl-text-type sl-font-mono sl-border-collapse sl-border-spacing-0 sl-outline-[rgba(0,0,0,0)] sl-rounded sl-outline sl-outline-1 hover:sl-outline-tertiary sl-outline-offset-1 sl-transition-[outline] sl-duration-200">
     <template v-if="calculatedDepth <= maxDepth">
       <tr @click="toggle">
         <Component
