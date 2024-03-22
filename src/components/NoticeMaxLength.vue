@@ -6,7 +6,8 @@ type Props = {
   maxLength?: number
 }
 
-const { value = [], maxLength = Infinity } = defineProps<Props>()
+const { value = [], maxLength = Number.POSITIVE_INFINITY } =
+  defineProps<Props>()
 </script>
 
 <template>

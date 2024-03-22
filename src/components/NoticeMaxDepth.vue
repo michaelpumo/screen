@@ -3,7 +3,7 @@ type Props = {
   maxDepth?: number
 }
 
-const { maxDepth = Infinity } = defineProps<Props>()
+const { maxDepth = Number.POSITIVE_INFINITY } = defineProps<Props>()
 </script>
 
 <template>

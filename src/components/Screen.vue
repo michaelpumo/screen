@@ -14,8 +14,8 @@ type Props = {
 const {
   log = undefined,
   label = 'Screen Log',
-  maxLength = Infinity,
-  maxDepth = Infinity,
+  maxLength = Number.POSITIVE_INFINITY,
+  maxDepth = Number.POSITIVE_INFINITY,
   mode = 'dark'
 } = defineProps<Props>()
 
@@ -26,15 +26,19 @@ const labelSanitized = computed(() =>
 )
 
 const maxLengthSanitized = computed(() =>
-  typeof maxLength === 'number' && maxLength > 0 && maxLength !== Infinity
+  typeof maxLength === 'number' &&
+  maxLength > 0 &&
+  maxLength !== Number.POSITIVE_INFINITY
     ? maxLength
-    : Infinity
+    : Number.POSITIVE_INFINITY
 )
 
 const maxDepthSanitized = computed(() =>
-  typeof maxDepth === 'number' && maxDepth > 0 && maxDepth !== Infinity
+  typeof maxDepth === 'number' &&
+  maxDepth > 0 &&
+  maxDepth !== Number.POSITIVE_INFINITY
     ? maxDepth
-    : Infinity
+    : Number.POSITIVE_INFINITY
 )
 </script>
 
@@ -56,12 +60,12 @@ const maxDepthSanitized = computed(() =>
         data-test-options
         class="sl-flex sl-m-0 sl-p-0 sl-ml-auto sl-text-muted sl-font-mono sl-text-xs sl-gap-1">
         <li
-          v-if="maxLengthSanitized !== Infinity"
+          v-if="maxLengthSanitized !== Number.POSITIVE_INFINITY"
           class="after:sl-content-['|'] after:sl-opacity-50 after:sl-ml-1">
           Max Length: {{ maxLengthSanitized }}
         </li>
         <li
-          v-if="maxDepthSanitized !== Infinity"
+          v-if="maxDepthSanitized !== Number.POSITIVE_INFINITY"
           class="after:sl-content-['|'] after:sl-opacity-50 after:sl-ml-1">
           Max Depth: {{ maxDepthSanitized }}
         </li>

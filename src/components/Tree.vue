@@ -18,8 +18,8 @@ type Props = {
 
 const {
   log = undefined,
-  maxLength = Infinity,
-  maxDepth = Infinity,
+  maxLength = Number.POSITIVE_INFINITY,
+  maxDepth = Number.POSITIVE_INFINITY,
   currentDepth = 0
 } = defineProps<Props>()
 const dataType = getType(log)
