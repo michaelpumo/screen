@@ -12,7 +12,7 @@
 
 <p align="center">
   <picture>
-    <img alt="Screen" src="https://github.com/michaelpumo/screen/assets/4269460/eb443cd8-49d4-436c-a5ee-753dbf866816" width="605">
+    <img alt="Screen" src="https://github.com/michaelpumo/screen/assets/4269460/5be158c3-001f-4d0e-babe-745568452c16" width="605">
   </picture>
 </p>
 
