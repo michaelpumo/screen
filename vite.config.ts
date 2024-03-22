@@ -7,7 +7,6 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   test: {
     globals: true
-    // setupFiles: ['vitest.setup.ts']
   },
   plugins: [
     vue({
