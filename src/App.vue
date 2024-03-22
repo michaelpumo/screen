@@ -1,28 +1,42 @@
 <script lang="ts" setup>
 import DemoAsync from '@/demo/Async.vue'
-import DemoStandard from '@/demo/Standard.vue'
+import DemoDark from '@/demo/Dark.vue'
+import DemoLight from './demo/Light.vue'
 </script>
 
 <template>
-  <div class="sl-p-5">
-    <h1 class="sl-text-type sl-font-mono sl-text-lg sl-font-bold">
-      Async Demo
-    </h1>
+  <main class="sl-w-full sl-p-5 sl-grid sl-grid-cols-1 sl-gap-10">
+    <section>
+      <h1
+        class="sl-text-type sl-font-mono sl-text-lg sl-font-bold sl-mt-0 sl-mb-5">
+        Dark Demo
+      </h1>
+      <DemoDark />
+    </section>
 
-    <Suspense>
-      <DemoAsync />
+    <section>
+      <h1
+        class="sl-text-type sl-font-mono sl-text-lg sl-font-bold sl-mt-0 sl-mb-5">
+        Light Demo
+      </h1>
+      <DemoLight />
+    </section>
 
-      <template #fallback>
-        <p class="sl-text-type sl-font-mono sl-text-sm sl-font-bold">
-          Loading...
-        </p>
-      </template>
-    </Suspense>
+    <section>
+      <h1
+        class="sl-text-type sl-font-mono sl-text-lg sl-font-bold sl-mt-0 sl-mb-5">
+        Async Demo
+      </h1>
 
-    <h1 class="sl-text-type sl-font-mono sl-text-lg sl-font-bold">
-      Standard Demo
-    </h1>
+      <Suspense>
+        <DemoAsync />
 
-    <DemoStandard />
-  </div>
+        <template #fallback>
+          <p class="sl-text-type sl-font-mono sl-text-sm sl-font-bold">
+            Loading...
+          </p>
+        </template>
+      </Suspense>
+    </section>
+  </main>
 </template>
