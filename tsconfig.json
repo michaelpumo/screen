@@ -1,12 +1,11 @@
 {
   "compilerOptions": {
     "baseUrl": "./",
+    "paths": {
+      "@/*": ["src/*"]
+    },
     "sourceMap": true,
     "esModuleInterop": true,
-    "paths": {
-      "@": ["."],
-      "@/*": ["./src/*"]
-    },
     "outDir": "dist",
     "declaration": true,
     "types": ["vitest", "jest", "vue"],
@@ -15,7 +14,7 @@
     "module": "esnext",
     "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "skipLibCheck": true,
-    "moduleResolution": "Bundler",
+    "moduleResolution": "bundler",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
