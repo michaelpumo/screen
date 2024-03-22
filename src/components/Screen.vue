@@ -1,7 +1,6 @@
 <script lang="ts" setup>
-import { onMounted, ref, watch } from 'vue'
+import { computed } from 'vue'
 import Tree from '@/components/Tree.vue'
-import Switch from '@/components/Switch.vue'
 import '@/assets/css/app.css'
 
 type Props = {
@@ -9,46 +8,40 @@ type Props = {
   label?: string
   maxLength?: number
   maxDepth?: number
+  mode?: 'dark' | 'light'
 }
 
 const {
   log = undefined,
   label = 'Screen Log',
   maxLength = Infinity,
-  maxDepth = Infinity
+  maxDepth = Infinity,
+  mode = 'dark'
 } = defineProps<Props>()
 
-const dark = ref(true)
-
-onMounted(() => {
-  dark.value = Boolean(localStorage?.['sl-mode'] !== 'light') ?? dark.value
-})
-
-watch(dark, (value) => {
-  if (!window?.localStorage) return
-  window.localStorage['sl-mode'] = value ? 'dark' : 'light'
-})
-
-const labelSanitized =
+const labelSanitized = computed(() =>
   typeof label === 'string' && label?.trim().length
     ? label.trim()
     : 'Screen Log'
+)
 
-const maxLengthSanitized =
+const maxLengthSanitized = computed(() =>
   typeof maxLength === 'number' && maxLength > 0 && maxLength !== Infinity
     ? maxLength
     : Infinity
+)
 
-const maxDepthSanitized =
+const maxDepthSanitized = computed(() =>
   typeof maxDepth === 'number' && maxDepth > 0 && maxDepth !== Infinity
     ? maxDepth
     : Infinity
+)
 </script>
 
 <template>
   <div
     data-component="Screen"
-    :data-mode="dark ? 'dark' : 'light'"
+    :data-mode="mode === 'dark' ? 'dark' : 'light'"
     class="sl-pf sl-w-full sl-max-w-max sl-p-1 sl-bg-secondary sl-rounded sl-antialiased">
     <header
       class="sl-w-full sl-flex sl-items-center sl-justify-between sl-bg-primary sl-px-2 sl-py-1.5 sl-rounded-tl sl-rounded-tr sl-gap-3 sl-border-2 sl-border-secondary sl-border-b-0">
@@ -72,12 +65,7 @@ const maxDepthSanitized =
           class="after:sl-content-['|'] after:sl-opacity-50 after:sl-ml-1">
           Max Depth: {{ maxDepthSanitized }}
         </li>
-        <li>{{ dark ? 'Dark' : 'Light' }}</li>
       </ul>
-
-      <Switch
-        v-model="dark"
-        label="Mode" />
     </header>
 
     <main

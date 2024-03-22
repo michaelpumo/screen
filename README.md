@@ -21,7 +21,7 @@
 #### Features
 - 💻 Log simple or complex values to the screen, in-place.
 - 📋 See the types, lengths and structure of your data.
-- 🌤️ Easily switch between light and dark modes (based on Dracula and Atom One Light themes).
+- 🌤️ Easily set light and dark modes (based on Dracula and Atom One Light themes).
 - 👻 Expand and collapse objects and arrays.
 - 🏷️ Custom label to make logging easier.
 - ✨ Ability to set max-length and max-depth on the arrays and objects you want to display.
@@ -151,11 +151,12 @@ const profile = {
 | --- | --- | --- | --- |
 | log | any | undefined | The variable to log to the screen. |
 | label | string | 'Screen Log' | The label to display at the top of the screen. |
+| mode | 'light' \| 'dark' | 'dark' | Set the appearance of the log. |
 | max-length | number | Infinity | The maximum length of arrays and object keys to display. |
 | max-depth | number | Infinity | The maximum depth of the tree to display. |
 
 #### Motivation
-I simply wanted something that functioned better than a basic `<pre>` tag for logging to the screen. 🤷🏻‍♂️ Feel free to share your thoughts on how this concept can be improved.
+I simply wanted something that functioned slightly better than a basic `<pre>` tag for logging to the screen. 🤷🏻‍♂️ Feel free to share your thoughts on how this concept can be improved.
 
 #### Requirements
 - Vue 3+
