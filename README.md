@@ -149,7 +149,7 @@ const profile = {
 #### Props
 | Name | Type | Default | Description |
 | --- | --- | --- | --- |
-| log | any | undefined | The variable to log to the screen. |
+| log | unknown | undefined | The variable to log to the screen. |
 | label | string | 'Screen Log' | The label to display at the top of the screen. |
 | mode | 'light' \| 'dark' | 'dark' | Set the appearance of the log. |
 | max-length | number | Number.POSITIVE_INFINITY | The maximum length of arrays and object keys to display. |
