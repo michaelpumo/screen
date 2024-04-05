@@ -7,7 +7,7 @@
     "access": "public"
   },
   "private": false,
-  "version": "0.0.12",
+  "version": "0.0.13",
   "type": "module",
   "repository": {
     "type": "git",
@@ -30,7 +30,10 @@
   "module": "./dist/screen.es.js",
   "exports": {
     ".": {
-      "import": "./dist/screen.es.js",
+      "import": {
+        "types": "./dist/lib.d.ts",
+        "default": "./dist/screen.es.js"
+      },
       "require": "./dist/screen.umd.js"
     },
     "./dist/screen.css": {
