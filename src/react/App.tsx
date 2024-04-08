@@ -1,14 +1,10 @@
-import { useState } from 'react'
+import React from 'react'
+import Screen from './components/Screen'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <h1>Count: {count}</h1>
-      <button onClick={() => setCount((count) => count + 1)}>
-        Increase Count
-      </button>
+      <Screen />
     </>
   )
 }

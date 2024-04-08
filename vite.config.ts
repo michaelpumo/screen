@@ -11,7 +11,7 @@ export default defineConfig({
   },
   plugins: [
     react({
-      jsxRuntime: 'automatic'
+      jsxRuntime: 'classic'
     }),
     vue({
       script: {
@@ -36,10 +36,11 @@ export default defineConfig({
       fileName: (format, entryName) => `${entryName}/screen.${format}.js`
     },
     rollupOptions: {
-      external: ['react', 'vue'],
+      external: ['react', 'react-dom', 'vue'],
       output: {
         globals: {
           react: 'React',
+          'react-dom': 'ReactDOM',
           vue: 'Vue'
         },
         assetFileNames: 'app.[ext]'

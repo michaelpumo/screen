@@ -5,7 +5,7 @@ function Screen() {
 
   return (
     <>
-      <h1>Count: {count}</h1>
+      <h1>Screen: {count}</h1>
       <button onClick={() => setCount((count) => count + 1)}>
         Increase Count
       </button>
