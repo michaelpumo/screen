@@ -56,7 +56,7 @@ npm i @michaelpumo/screen --save-dev
   Import the stylesheet into your main CSS file.
   
   ```css
-  @import '@michaelpumo/screen/dist/screen.css';
+  @import '@michaelpumo/screen/app.css';
   ```
 </details>
 
@@ -74,7 +74,7 @@ npm i @michaelpumo/screen --save-dev
 
   ```typescript
   export default defineNuxtConfig({
-    css: ['@michaelpumo/screen/dist/screen.css']
+    css: ['@michaelpumo/screen/app.css']
   });
   ```
 
@@ -89,7 +89,7 @@ npm i @michaelpumo/screen --save-dev
     setup() {
       addComponent({
         name: 'Screen',
-        filePath: '@michaelpumo/screen',
+        filePath: '@michaelpumo/screen/vue',
         mode: 'client',
       });
     },
@@ -100,7 +100,7 @@ npm i @michaelpumo/screen --save-dev
   
   ```typescript
   export default defineNuxtConfig({
-    css: ['@michaelpumo/screen/dist/screen.css'],
+    css: ['@michaelpumo/screen/app.css'],
     components: true,
   });
   ```
@@ -127,7 +127,7 @@ npm i @michaelpumo/screen --save-dev
 
 ```vue
 <script lang="ts" setup>
-import Screen from '@michaelpumo/screen'
+import Screen from '@michaelpumo/screen/vue'
 
 const profile = {
   name: 'Michael',
