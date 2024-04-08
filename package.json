@@ -45,9 +45,9 @@
         "default": "./dist/vue/screen.umd.js"
       }
     },
-    "./dist/screen.css": {
-      "import": "./dist/screen.css",
-      "require": "./dist/screen.css"
+    "./app.css": {
+      "import": "./dist/app.css",
+      "require": "./dist/app.css"
     }
   },
   "scripts": {

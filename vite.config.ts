@@ -42,7 +42,7 @@ export default defineConfig({
           react: 'React',
           vue: 'Vue'
         },
-        assetFileNames: 'screen.[ext]'
+        assetFileNames: 'app.[ext]'
       }
     }
   }
