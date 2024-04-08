@@ -2,6 +2,7 @@
 
 import { resolve } from 'path'
 import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 import vue from '@vitejs/plugin-vue'
 
 export default defineConfig({
@@ -9,6 +10,9 @@ export default defineConfig({
     globals: true
   },
   plugins: [
+    react({
+      jsxRuntime: 'automatic'
+    }),
     vue({
       script: {
         defineModel: true,
@@ -22,18 +26,20 @@ export default defineConfig({
     }
   },
   build: {
-    ssr: false,
-    target: 'esnext',
-    sourcemap: true,
+    outDir: resolve(__dirname, 'dist'),
     lib: {
-      entry: resolve(__dirname, 'src/lib.ts'),
+      entry: {
+        react: resolve(__dirname, 'src/react/lib.ts'),
+        vue: resolve(__dirname, 'src/vue/lib.ts')
+      },
       name: 'screen',
-      fileName: (format) => `screen.${format}.js`
+      fileName: (format, entryName) => `${entryName}/screen.${format}.js`
     },
     rollupOptions: {
-      external: ['vue'],
+      external: ['react', 'vue'],
       output: {
         globals: {
+          react: 'React',
           vue: 'Vue'
         },
         assetFileNames: 'screen.[ext]'

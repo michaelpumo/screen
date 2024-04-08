@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { getLength } from '@/utils/helpers'
+import { getLength } from '../../utils/helpers'
 
 type Props = {
   value?: unknown

@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { computed } from 'vue'
-import Tree from '@/components/Tree.vue'
-import '@/assets/css/app.css'
+import Tree from './Tree.vue'
+import '../../css/app.css'
 
 type Props = {
   log?: unknown

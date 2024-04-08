@@ -5,9 +5,9 @@ import {
   hasLength,
   isComplexType,
   truncate
-} from '@/utils/helpers'
-import NoticeMaxDepth from '@/components/NoticeMaxDepth.vue'
-import NoticeMaxLength from '@/components/NoticeMaxLength.vue'
+} from '../../utils/helpers'
+import NoticeMaxDepth from './NoticeMaxDepth.vue'
+import NoticeMaxLength from './NoticeMaxLength.vue'
 
 type Props = {
   log?: unknown

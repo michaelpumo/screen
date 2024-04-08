@@ -20,18 +20,22 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": false,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.vue"],
+  "include": ["src/**/*.d.ts", "src/**/*.{vue,tsx,ts}"],
   "exclude": [
-    "src/App.vue",
-    "src/demo/**/*",
-    "src/main.ts",
-    "src/__tests__/**/*",
+    "src/vue/App.vue",
+    "src/vue/demo/**/*",
+    "src/vue/main.ts",
+    "src/vue/__tests__/**/*",
+    "src/react/App.tsx",
+    "src/react/demo/**/*",
+    "src/react/main.ts",
+    "src/react/__tests__/**/*",
     "dist/**/*"
   ],
   "references": [{ "path": "./tsconfig.node.json" }]

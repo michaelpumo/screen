@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import Screen from '@/components/Screen.vue'
+import Screen from '../components/Screen.vue'
 
 const profile = {
   name: 'Michael',
