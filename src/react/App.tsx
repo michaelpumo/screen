@@ -1,10 +1,11 @@
 import React from 'react'
-import Screen from './components/Screen'
+// import Screen from './components/Screen'
 
 function App() {
   return (
     <>
-      <Screen />
+      <p>Hello World.</p>
+      {/* <Screen log={profile} /> */}
     </>
   )
 }
