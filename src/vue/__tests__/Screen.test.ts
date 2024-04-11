@@ -1,4 +1,5 @@
 import { mount } from '@vue/test-utils'
+import { wait } from '../../utils/helpers'
 import Screen from '../components/Screen.vue'
 
 describe('Screen.vue', () => {
@@ -31,8 +32,10 @@ describe('Screen.vue', () => {
       },
     })
 
+    await wait(0) // Hack because Suspense. Fix.
+
     const rows = wrapper.findAll('[data-test-main] > table > tbody > tr')
-    const rowsOfData = rows.length - 2
+    const rowsOfData = rows.length - 1
 
     expect(rowsOfData).toBe(maxLength)
   })
@@ -57,8 +60,10 @@ describe('Screen.vue', () => {
       },
     })
 
+    await wait(0) // Hack because Suspense. Fix.
+
     const rows = wrapper.findAll('[data-test-main] > table > tbody > tr')
-    const rowsOfData = rows.length - 2
+    const rowsOfData = rows.length - 1
 
     expect(rowsOfData).toBe(maxLength)
   })
