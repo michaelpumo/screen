@@ -15,6 +15,7 @@
     --sl-yellow: #e5c07b;
 
     /* Atom One + Custom */
+    --sl-blue: #008cff;
     --sl-lilac: #ad82cb;
     --sl-mint: #77e89d;
     --sl-gold: #ffaa00;
@@ -25,6 +26,7 @@
     --sl-royal: #aa00ff;
     --sl-rose: #ff8cf0;
     --sl-indigo: #6f6fff;
+    --sl-blush: #ff97a0;
 
     /* Foundational Colours */
     --sl-muted: #7b8bad;
@@ -36,14 +38,28 @@
 
     /* Token Colours */
     --sl-array: var(--sl-purple);
+    --sl-arraybuffer: var(--sl-purple);
+    --sl-asyncfunction: var(--sl-blush);
+    --sl-asyncgeneratorfunction: var(--sl-blush);
     --sl-bigint: var(--sl-lilac);
+    --sl-bigint64array: var(--sl-purple);
+    --sl-biguint64array: var(--sl-purple);
     --sl-boolean: var(--sl-yellow);
     --sl-comment: var(--sl-slate);
     --sl-date: var(--sl-custard);
-    --sl-function: var(--sl-mint);
+    --sl-error: var(--sl-red);
+    --sl-file: var(--sl-blush);
+    --sl-float32array: var(--sl-purple);
+    --sl-float64array: var(--sl-purple);
+    --sl-function: var(--sl-blush);
+    --sl-generatorfunction: var(--sl-blush);
     --sl-htmlbodyelement: var(--sl-indigo);
+    --sl-int8array: var(--sl-purple);
+    --sl-int16array: var(--sl-purple);
+    --sl-int32array: var(--sl-purple);
     --sl-location: var(--sl-rose);
     --sl-map: var(--sl-sky);
+    --sl-math: var(--sl-yellow);
     --sl-null: var(--sl-red);
     --sl-number: var(--sl-green);
     --sl-object: var(--sl-pink);
@@ -51,8 +67,16 @@
     --sl-set: var(--sl-royal);
     --sl-string: var(--sl-orange);
     --sl-symbol: var(--sl-terracotta);
+    --sl-uint8array: var(--sl-purple);
+    --sl-uint16array: var(--sl-purple);
+    --sl-uint16array: var(--sl-purple);
+    --sl-uint32array: var(--sl-purple);
+    --sl-uint8clampedarray: var(--sl-purple);
     --sl-undefined: var(--sl-cyan);
+    --sl-url: var(--sl-mint);
+    --sl-urlsearchparams: var(--sl-mint);
     --sl-weakmap: var(--sl-gold);
+    --sl-weakref: var(--sl-blue);
     --sl-weakset: var(--sl-magenta);
 
     [data-mode='dark'] {
@@ -67,6 +91,7 @@
       --sl-yellow: #f1fa8c;
 
       /* Dracula + Custom */
+      --sl-blue: #008cff;
       --sl-lilac: #ad82cb;
       --sl-mint: #77e89d;
       --sl-gold: #ffaa00;
@@ -77,6 +102,7 @@
       --sl-royal: #aa00ff;
       --sl-rose: #ff8cf0;
       --sl-indigo: #6f6fff;
+      --sl-blush: #ff97a0;
 
       /* Foundational Colours */
       --sl-muted: #6782bb;
@@ -88,14 +114,28 @@
 
       /* Token Colours */
       --sl-array: var(--sl-purple);
+      --sl-arraybuffer: var(--sl-purple);
+      --sl-asyncfunction: var(--sl-blush);
+      --sl-asyncgeneratorfunction: var(--sl-blush);
       --sl-bigint: var(--sl-lilac);
+      --sl-bigint64array: var(--sl-purple);
+      --sl-biguint64array: var(--sl-purple);
       --sl-boolean: var(--sl-yellow);
       --sl-comment: var(--sl-slate);
       --sl-date: var(--sl-custard);
-      --sl-function: var(--sl-mint);
+      --sl-error: var(--sl-red);
+      --sl-file: var(--sl-blush);
+      --sl-float32array: var(--sl-purple);
+      --sl-float64array: var(--sl-purple);
+      --sl-function: var(--sl-blush);
+      --sl-generatorfunction: var(--sl-blush);
       --sl-htmlbodyelement: var(--sl-indigo);
+      --sl-int8array: var(--sl-purple);
+      --sl-int16array: var(--sl-purple);
+      --sl-int32array: var(--sl-purple);
       --sl-location: var(--sl-rose);
       --sl-map: var(--sl-sky);
+      --sl-math: var(--sl-yellow);
       --sl-null: var(--sl-red);
       --sl-number: var(--sl-green);
       --sl-object: var(--sl-pink);
@@ -103,8 +143,16 @@
       --sl-set: var(--sl-royal);
       --sl-string: var(--sl-orange);
       --sl-symbol: var(--sl-terracotta);
+      --sl-uint8array: var(--sl-purple);
+      --sl-uint16array: var(--sl-purple);
+      --sl-uint16array: var(--sl-purple);
+      --sl-uint32array: var(--sl-purple);
+      --sl-uint8clampedarray: var(--sl-purple);
       --sl-undefined: var(--sl-cyan);
+      --sl-url: var(--sl-mint);
+      --sl-urlsearchparams: var(--sl-mint);
       --sl-weakmap: var(--sl-gold);
+      --sl-weakref: var(--sl-blue);
       --sl-weakset: var(--sl-magenta);
     }
   }
