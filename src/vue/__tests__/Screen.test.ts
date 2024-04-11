@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils'
-import Screen from '@/components/Screen.vue'
+import Screen from '../components/Screen.vue'
 
 describe('Screen.vue', () => {
   it('renders label correctly with default value', () => {
@@ -13,8 +13,8 @@ describe('Screen.vue', () => {
     const label = 'Test Label'
     const wrapper = mount(Screen, {
       props: {
-        label
-      }
+        label,
+      },
     })
 
     const labelEl = wrapper.find('[data-test-label]')
@@ -27,11 +27,11 @@ describe('Screen.vue', () => {
     const wrapper = mount(Screen, {
       props: {
         log: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
-        maxLength
-      }
+        maxLength,
+      },
     })
 
-    const rows = wrapper.findAll('[data-test-main] > table > tr')
+    const rows = wrapper.findAll('[data-test-main] > table > tbody > tr')
     const rowsOfData = rows.length - 2
 
     expect(rowsOfData).toBe(maxLength)
@@ -42,22 +42,22 @@ describe('Screen.vue', () => {
     const wrapper = mount(Screen, {
       props: {
         log: {
-          a: 'a',
-          b: 'b',
-          c: 'c',
-          d: 'd',
-          e: 'e',
-          f: 'f',
-          g: 'g',
-          h: 'h',
-          i: 'i',
-          j: 'j'
+          a: 1,
+          b: 2,
+          c: 3,
+          d: 4,
+          e: 5,
+          f: 6,
+          g: 7,
+          h: 8,
+          i: 9,
+          j: 10,
         },
-        maxLength
-      }
+        maxLength,
+      },
     })
 
-    const rows = wrapper.findAll('[data-test-main] > table > tr')
+    const rows = wrapper.findAll('[data-test-main] > table > tbody > tr')
     const rowsOfData = rows.length - 2
 
     expect(rowsOfData).toBe(maxLength)
