@@ -16,13 +16,13 @@ const {
   label = 'Screen Log',
   maxLength = Number.POSITIVE_INFINITY,
   maxDepth = Number.POSITIVE_INFINITY,
-  mode = 'dark'
+  mode = 'dark',
 } = defineProps<Props>()
 
 const labelSanitized = computed(() =>
   typeof label === 'string' && label?.trim().length
     ? label.trim()
-    : 'Screen Log'
+    : 'Screen Log',
 )
 
 const maxLengthSanitized = computed(() =>
@@ -30,7 +30,7 @@ const maxLengthSanitized = computed(() =>
   maxLength > 0 &&
   maxLength !== Number.POSITIVE_INFINITY
     ? maxLength
-    : Number.POSITIVE_INFINITY
+    : Number.POSITIVE_INFINITY,
 )
 
 const maxDepthSanitized = computed(() =>
@@ -38,7 +38,7 @@ const maxDepthSanitized = computed(() =>
   maxDepth > 0 &&
   maxDepth !== Number.POSITIVE_INFINITY
     ? maxDepth
-    : Number.POSITIVE_INFINITY
+    : Number.POSITIVE_INFINITY,
 )
 </script>
 
@@ -58,15 +58,11 @@ const maxDepthSanitized = computed(() =>
 
       <ul
         data-test-options
-        class="sl-flex sl-m-0 sl-p-0 sl-ml-auto sl-text-muted sl-font-mono sl-text-xs sl-gap-1">
-        <li
-          v-if="maxLengthSanitized !== Number.POSITIVE_INFINITY"
-          class="after:sl-content-['|'] after:sl-opacity-50 after:sl-ml-1">
+        class="sl-flex sl-m-0 sl-p-0 sl-ml-auto sl-text-muted sl-font-mono sl-text-xs sl-gap-2">
+        <li v-if="maxLengthSanitized !== Number.POSITIVE_INFINITY">
           Max Length: {{ maxLengthSanitized }}
         </li>
-        <li
-          v-if="maxDepthSanitized !== Number.POSITIVE_INFINITY"
-          class="after:sl-content-['|'] after:sl-opacity-50 after:sl-ml-1">
+        <li v-if="maxDepthSanitized !== Number.POSITIVE_INFINITY">
           Max Depth: {{ maxDepthSanitized }}
         </li>
       </ul>
@@ -75,10 +71,12 @@ const maxDepthSanitized = computed(() =>
     <main
       data-test-main
       class="sl-overflow-x-auto sl-overscroll-x-contain">
-      <Tree
-        :log="log"
-        :max-length="maxLengthSanitized"
-        :max-depth="maxDepthSanitized" />
+      <Suspense>
+        <Tree
+          :log="log"
+          :max-length="maxLengthSanitized"
+          :max-depth="maxDepthSanitized" />
+      </Suspense>
     </main>
 
     <footer

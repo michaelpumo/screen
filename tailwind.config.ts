@@ -43,7 +43,6 @@ export default {
         float64array: 'var(--sl-purple)',
         function: 'var(--sl-function)',
         generatorfunction: 'var(--sl-generatorfunction)',
-        htmlbodyelement: 'var(--sl-htmlbodyelement)',
         int8array: 'var(--sl-int8array)',
         int16array: 'var(--sl-int16array)',
         int32array: 'var(--sl-int32array)',

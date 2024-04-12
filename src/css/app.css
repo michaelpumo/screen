@@ -53,7 +53,6 @@
     --sl-float64array: var(--sl-purple);
     --sl-function: var(--sl-blush);
     --sl-generatorfunction: var(--sl-blush);
-    --sl-htmlbodyelement: var(--sl-indigo);
     --sl-int8array: var(--sl-purple);
     --sl-int16array: var(--sl-purple);
     --sl-int32array: var(--sl-purple);
@@ -129,7 +128,6 @@
       --sl-float64array: var(--sl-purple);
       --sl-function: var(--sl-blush);
       --sl-generatorfunction: var(--sl-blush);
-      --sl-htmlbodyelement: var(--sl-indigo);
       --sl-int8array: var(--sl-purple);
       --sl-int16array: var(--sl-purple);
       --sl-int32array: var(--sl-purple);
