@@ -1,5 +1,5 @@
 const wait = (ms: number = 0): Promise<void> =>
-  new Promise((resolve) => setTimeout(resolve, ms))
+  new Promise(resolve => setTimeout(resolve, ms))
 
 const getType = (value: unknown): string =>
   Object.prototype.toString
@@ -13,14 +13,16 @@ const getLength = (value: unknown): number => {
 
   if (value && ['object'].includes(typeRaw)) {
     return Object.keys(value).length
-  } else if (
-    (Array.isArray(value) || typeof value === 'string') &&
-    ['array', 'string'].includes(typeRaw)
+  }
+  else if (
+    (Array.isArray(value) || typeof value === 'string')
+    && ['array', 'string'].includes(typeRaw)
   ) {
     return value.length
-  } else if (
-    (value instanceof Set || value instanceof Map) &&
-    ['map', 'set'].includes(typeRaw)
+  }
+  else if (
+    (value instanceof Set || value instanceof Map)
+    && ['map', 'set'].includes(typeRaw)
   ) {
     return value.size
   }
@@ -35,7 +37,8 @@ const hasLength = (value: string): boolean => {
 const toggleRows = (e: Event) => {
   const table = (e.target as HTMLElement).closest('table')
 
-  if (!table) return
+  if (!table)
+    return
 
   const rows = Array.from(
     table.querySelectorAll(':scope > tbody tr'),
@@ -58,7 +61,8 @@ const truncate = (value: unknown, maxLength: number): object => {
     const sliced = entries.slice(0, maxLength)
 
     return Object.fromEntries(sliced)
-  } else if (Array.isArray(value) && typeRaw === 'array') {
+  }
+  else if (Array.isArray(value) && typeRaw === 'array') {
     return value.slice(0, maxLength)
   }
 
@@ -69,12 +73,13 @@ const isCircular = (value: unknown) => {
   try {
     JSON.stringify(value)
     return false
-  } catch (error) {
+  }
+  catch (error) {
     return true
   }
 }
 
-type LogData = {
+interface LogData {
   data: unknown
   dataRaw: unknown
   typeDisplay: string
@@ -118,7 +123,8 @@ const formatData = async (value: unknown): Promise<LogData> => {
 
     data = obj
     typeDisplay = 'object'
-  } else if (['map', 'urlsearchparams'].includes(typeRaw)) {
+  }
+  else if (['map', 'urlsearchparams'].includes(typeRaw)) {
     const temp = value as Map<string, string> | URLSearchParams
 
     for (const [key, value] of temp.entries()) {
@@ -127,20 +133,23 @@ const formatData = async (value: unknown): Promise<LogData> => {
 
     data = obj
     typeDisplay = 'object'
-  } else if (typeRaw === 'arraybuffer') {
+  }
+  else if (typeRaw === 'arraybuffer') {
     const buffer = value as ArrayBuffer
     const typedArray = new Uint8Array(buffer)
 
     data = [...typedArray]
     typeDisplay = 'array'
-  } else if (typeRaw === 'blob') {
+  }
+  else if (typeRaw === 'blob') {
     const temp = value as Blob
 
     const readBlobContents = async (blob: Blob) => {
       try {
         const contents = await blob.text()
         return contents
-      } catch (error) {
+      }
+      catch (error) {
         return error
       }
     }
@@ -153,7 +162,8 @@ const formatData = async (value: unknown): Promise<LogData> => {
       type: temp.type,
     }
     typeDisplay = 'object'
-  } else if (
+  }
+  else if (
     [
       'bigint64array',
       'biguint64array',
@@ -174,8 +184,9 @@ const formatData = async (value: unknown): Promise<LogData> => {
 
     data = [...temp]
     typeDisplay = 'array'
-  } else {
-    const temp = value as any //ObjectTypes
+  }
+  else {
+    const temp = value as any // ObjectTypes
     const propertyNames = Object.getOwnPropertyNames(temp)
 
     if (Array.isArray(propertyNames) && propertyNames.length) {
@@ -183,7 +194,8 @@ const formatData = async (value: unknown): Promise<LogData> => {
         const current = temp[key as keyof any]
         obj[key] = isCircular(current) ? `Circular Ref: ${key}` : current
       }
-    } else if (['mimetype'].includes(typeRaw)) {
+    }
+    else if (['mimetype'].includes(typeRaw)) {
       // console.log(
       //   'Circular',
       //   isCircular(temp),
@@ -191,7 +203,8 @@ const formatData = async (value: unknown): Promise<LogData> => {
       //   temp,
       //   Object.keys(temp),
       // )
-    } else {
+    }
+    else {
       for (const key in temp) {
         const current = temp[key as keyof any]
         obj[key] = isCircular(current) ? `Circular Ref: ${key}` : current

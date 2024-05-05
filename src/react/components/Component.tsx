@@ -1,4 +1,5 @@
-import React, { ElementType, HTMLAttributes, FC, ReactNode } from 'react'
+import type { ElementType, FC, HTMLAttributes, ReactNode } from 'react'
+import React from 'react'
 
 interface ComponentProps extends HTMLAttributes<HTMLOrSVGElement> {
   children: ReactNode

@@ -2,7 +2,7 @@ import { mount } from '@vue/test-utils'
 import { wait } from '../../utils/helpers'
 import Screen from '../components/Screen.vue'
 
-describe('Screen.vue', () => {
+describe('screen.vue', () => {
   it('renders label correctly with default value', () => {
     const wrapper = mount(Screen)
     const labelEl = wrapper.find('[data-test-label]')

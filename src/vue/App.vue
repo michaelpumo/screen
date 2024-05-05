@@ -117,8 +117,7 @@ const data = {
 <template>
   <main class="sl-p-10 sl-grid sl-grid-cols-1 sl-gap-10">
     <section>
-      <h1
-        class="sl-text-type sl-font-mono sl-text-lg sl-font-bold sl-mt-0 sl-mb-5">
+      <h1 class="sl-text-type sl-font-mono sl-text-lg sl-font-bold sl-mt-0 sl-mb-5">
         Demo
       </h1>
 
@@ -126,7 +125,8 @@ const data = {
         :log="data"
         label="Data"
         :max-depth="20"
-        :max-length="20" />
+        :max-length="20"
+      />
     </section>
   </main>
 </template>
