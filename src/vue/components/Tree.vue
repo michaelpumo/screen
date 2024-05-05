@@ -26,8 +26,8 @@ const {
 } = defineProps<Props>()
 
 const calculatedDepth = currentDepth + 1
-const { data, type, typeRaw } = await formatData(log)
-const dataNestable = ['object', 'array'].includes(type)
+const { data, typeDisplay, typeRaw } = await formatData(log)
+const dataNestable = ['object', 'array'].includes(typeDisplay)
 </script>
 
 <template>
@@ -43,7 +43,7 @@ const dataNestable = ['object', 'array'].includes(type)
             <template v-if="dataNestable">
               <div
                 class="sl-select-none sl-cursor-pointer sl-bg-secondary sl-px-1.5 sl-py-0.5 sl-rounded sl-text-muted">
-                {{ type === 'array' ? 'i' : 'key' }}
+                {{ typeDisplay === 'array' ? 'i' : 'key' }}
               </div>
             </template>
             <template v-else>
@@ -64,7 +64,7 @@ const dataNestable = ['object', 'array'].includes(type)
                 {{ typeRaw }}
 
                 <LengthCount
-                  v-if="hasLength(type)"
+                  v-if="hasLength(typeDisplay)"
                   :log="data"
                   :type="typeRaw" />
               </div>
@@ -81,7 +81,7 @@ const dataNestable = ['object', 'array'].includes(type)
                 </span>
 
                 <LengthCount
-                  v-if="hasLength(type)"
+                  v-if="hasLength(typeDisplay)"
                   :log="data"
                   :type="typeRaw" />
               </div>
@@ -94,7 +94,7 @@ const dataNestable = ['object', 'array'].includes(type)
         <tbody>
           <!-- Object-like -->
           <template
-            v-if="data && typeof data === 'object' && type === 'object'">
+            v-if="data && typeof data === 'object' && typeDisplay === 'object'">
             <tr
               v-for="key in Object.keys(truncate(data, maxLength))"
               :key="key">

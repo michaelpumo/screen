@@ -1,5 +1,3 @@
-import { S } from 'vitest/dist/reporters-P7C2ytIv.js'
-
 const wait = (ms: number = 0): Promise<void> =>
   new Promise((resolve) => setTimeout(resolve, ms))
 
@@ -11,18 +9,18 @@ const getType = (value: unknown): string =>
     .toLowerCase()
 
 const getLength = (value: unknown): number => {
-  const dataType = getType(value)
+  const typeRaw = getType(value)
 
-  if (value && ['object'].includes(dataType)) {
+  if (value && ['object'].includes(typeRaw)) {
     return Object.keys(value).length
   } else if (
     (Array.isArray(value) || typeof value === 'string') &&
-    ['array', 'string'].includes(dataType)
+    ['array', 'string'].includes(typeRaw)
   ) {
     return value.length
   } else if (
     (value instanceof Set || value instanceof Map) &&
-    ['map', 'set'].includes(dataType)
+    ['map', 'set'].includes(typeRaw)
   ) {
     return value.size
   }
@@ -53,14 +51,14 @@ const toggleRows = (e: Event) => {
 }
 
 const truncate = (value: unknown, maxLength: number): object => {
-  const type = getType(value)
+  const typeRaw = getType(value)
 
-  if (value && type === 'object') {
+  if (value && typeRaw === 'object') {
     const entries = Object.entries(value)
     const sliced = entries.slice(0, maxLength)
 
     return Object.fromEntries(sliced)
-  } else if (Array.isArray(value) && type === 'array') {
+  } else if (Array.isArray(value) && typeRaw === 'array') {
     return value.slice(0, maxLength)
   }
 
@@ -78,8 +76,8 @@ const isCircular = (value: unknown) => {
 
 type LogData = {
   data: unknown
-  type: string
   dataRaw: unknown
+  typeDisplay: string
   typeRaw: string
 }
 
@@ -87,72 +85,31 @@ const formatData = async (value: unknown): Promise<LogData> => {
   const dataRaw = value
   const typeRaw = getType(value)
   let data = value
-  let type = typeRaw
+  let typeDisplay = typeRaw
+  const obj: Record<string, unknown> = {}
 
   if (
     [
-      'cachestorage',
-      'console',
-      'crypto',
-      'domstringlist',
-      'file',
-      'frames',
-      'globalThis',
-      'history',
-      'htmldocument',
-      'idbfactory',
-      'location',
-      'navigator',
-      'nodelist',
-      'parent',
-      'performance',
-      'performancetiming',
-      'performancenavigation',
-      'screen',
-      'screenorientation',
-      'self',
-      'storage',
-      'subtlecrypto',
-      'top',
-      'url',
-      'visualviewport',
-      'window',
+      'array',
+      'bigint',
+      'boolean',
+      'function',
+      'null',
+      'number',
+      'object',
+      'string',
+      'symbol',
+      'undefined',
     ].includes(typeRaw)
   ) {
-    type ObjectTypes =
-      | Console
-      | DOMStringList
-      | Crypto
-      | File
-      | Global
-      | History
-      | Document
-      | Location
-      | NodeList
-      | NodeListOf<Element>
-      | Performance
-      | Screen
-      | ScreenOrientation
-      | Storage
-      | SubtleCrypto
-      | URL
-      | VisualViewport
-      | Window
-      | WindowProxy
-      | typeof globalThis
-    const temp = value as ObjectTypes
-    const obj: Record<string, unknown> = {}
+    return { data, typeDisplay, dataRaw, typeRaw }
+  }
 
-    for (const key in temp) {
-      const current = temp[key as keyof ObjectTypes]
-      obj[key] = isCircular(current) ? `Circular Ref: ${key}` : current
-    }
+  if (['error', 'intl', 'math', 'json'].includes(typeRaw)) {
+    type Intl = typeof Intl
+    type ObjectTypes = Error | Math | JSON | Intl
 
-    data = obj
-  } else if (['error', 'intl', 'math', 'json'].includes(typeRaw)) {
-    type ObjectTypes = Error | Math | JSON
     const temp = value as ObjectTypes
-    const obj: Record<string, unknown> = {}
 
     for (const key of Object.getOwnPropertyNames(temp)) {
       const current = temp[key as keyof ObjectTypes]
@@ -160,20 +117,22 @@ const formatData = async (value: unknown): Promise<LogData> => {
     }
 
     data = obj
+    typeDisplay = 'object'
   } else if (['map', 'urlsearchparams'].includes(typeRaw)) {
     const temp = value as Map<string, string> | URLSearchParams
-    const obj: Record<string, unknown> = {}
 
     for (const [key, value] of temp.entries()) {
-      obj[key] = value
+      obj[key] = isCircular(value) ? `Circular Ref: ${key}` : value
     }
 
     data = obj
+    typeDisplay = 'object'
   } else if (typeRaw === 'arraybuffer') {
     const buffer = value as ArrayBuffer
     const typedArray = new Uint8Array(buffer)
 
     data = [...typedArray]
+    typeDisplay = 'array'
   } else if (typeRaw === 'blob') {
     const temp = value as Blob
 
@@ -193,6 +152,7 @@ const formatData = async (value: unknown): Promise<LogData> => {
       size: temp.size,
       type: temp.type,
     }
+    typeDisplay = 'object'
   } else if (
     [
       'bigint64array',
@@ -213,63 +173,36 @@ const formatData = async (value: unknown): Promise<LogData> => {
     const temp = value as Uint8Array
 
     data = [...temp]
+    typeDisplay = 'array'
+  } else {
+    const temp = value as any //ObjectTypes
+    const propertyNames = Object.getOwnPropertyNames(temp)
+
+    if (Array.isArray(propertyNames) && propertyNames.length) {
+      for (const key of propertyNames) {
+        const current = temp[key as keyof any]
+        obj[key] = isCircular(current) ? `Circular Ref: ${key}` : current
+      }
+    } else if (['mimetype'].includes(typeRaw)) {
+      // console.log(
+      //   'Circular',
+      //   isCircular(temp),
+      //   typeRaw,
+      //   temp,
+      //   Object.keys(temp),
+      // )
+    } else {
+      for (const key in temp) {
+        const current = temp[key as keyof any]
+        obj[key] = isCircular(current) ? `Circular Ref: ${key}` : current
+      }
+    }
+
+    data = obj
+    typeDisplay = 'object'
   }
 
-  const toObjectDisplay = [
-    'blob',
-    'cachestorage',
-    'console',
-    'crypto',
-    'domstringlist',
-    'error',
-    'file',
-    'history',
-    'htmldocument',
-    'idbfactory',
-    'intl',
-    'json',
-    'location',
-    'navigator',
-    'map',
-    'math',
-    'nodelist',
-    'performance',
-    'performancetiming',
-    'performancenavigation',
-    'screen',
-    'screenorientation',
-    'storage',
-    'subtlecrypto',
-    'url',
-    'urlsearchparams',
-    'visualviewport',
-    'window',
-  ]
-
-  const toArrayDisplay = [
-    'arraybuffer',
-    'bigint64array',
-    'biguint64array',
-    'float32array',
-    'float64array',
-    'int8array',
-    'int16array',
-    'int32array',
-    'set',
-    'uint8array',
-    'uint16array',
-    'uint16array',
-    'uint32array',
-    'uint8clampedarray',
-  ]
-
-  type = toObjectDisplay.includes(typeRaw)
-    ? 'object'
-    : toArrayDisplay.includes(typeRaw)
-      ? 'array'
-      : typeRaw
-
-  return { data, type, dataRaw, typeRaw }
+  return { data, typeDisplay, dataRaw, typeRaw }
 }
 
 export { wait, getType, getLength, hasLength, toggleRows, truncate, formatData }
