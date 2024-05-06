@@ -30,7 +30,7 @@
 
 <br>
 
-> [!IMPORTANT]  
+> [!IMPORTANT]
 > This project is under active development and may go through significant changes. Early users greatly appreciated for feedback, advice and suggestions 🙏
 
 <br>
@@ -54,7 +54,7 @@ npm i @michaelpumo/screen --save-dev
   </p>
 
   Import the stylesheet into your main CSS file.
-  
+
   ```css
   @import '@michaelpumo/screen/app.css';
   ```
@@ -79,12 +79,12 @@ npm i @michaelpumo/screen --save-dev
   ```
 
   You may also find it useful to have Nuxt auto-import the component, so that you can use it freely around your application without manually importing everywhere you need it. You can do this by creating a simple module that imports it for you automatically.
-  
+
   `modules/screen.ts`
 
   ```typescript
   import { addComponent, defineNuxtModule } from '@nuxt/kit';
-  
+
   export default defineNuxtModule({
     setup() {
       addComponent({
@@ -97,14 +97,14 @@ npm i @michaelpumo/screen --save-dev
   ```
 
   Make sure you have auto component import enabled in your `nuxt.config.{js,ts}` file too:
-  
+
   ```typescript
   export default defineNuxtConfig({
     css: ['@michaelpumo/screen/app.css'],
     components: true,
   });
   ```
- 
+
   **Note** If you do not want to auto import this component (though it's recommended) then you may need to wrap `<Screen />` into a `<ClientOnly>` tag to avoid warnings with SSR:
 
   ```vue

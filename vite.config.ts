@@ -1,50 +1,50 @@
 /// <reference types="vitest" />
 
-import { resolve } from 'path'
+import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import vue from '@vitejs/plugin-vue'
 
 export default defineConfig({
   test: {
-    globals: true
+    globals: true,
   },
   plugins: [
     react({
-      jsxRuntime: 'classic'
+      jsxRuntime: 'classic',
     }),
     vue({
       script: {
         defineModel: true,
-        propsDestructure: true
-      }
-    })
+        propsDestructure: true,
+      },
+    }),
   ],
   resolve: {
     alias: {
-      '@': resolve(__dirname, 'src')
-    }
+      '@': resolve(__dirname, 'src'),
+    },
   },
   build: {
     outDir: resolve(__dirname, 'dist'),
     lib: {
       entry: {
         react: resolve(__dirname, 'src/react/lib.ts'),
-        vue: resolve(__dirname, 'src/vue/lib.ts')
+        vue: resolve(__dirname, 'src/vue/lib.ts'),
       },
       name: 'screen',
-      fileName: (format, entryName) => `${entryName}/screen.${format}.js`
+      fileName: (format, entryName) => `${entryName}/screen.${format}.js`,
     },
     rollupOptions: {
       external: ['react', 'react-dom', 'vue'],
       output: {
         globals: {
-          react: 'React',
+          'react': 'React',
           'react-dom': 'ReactDOM',
-          vue: 'Vue'
+          'vue': 'Vue',
         },
-        assetFileNames: 'app.[ext]'
-      }
-    }
-  }
+        assetFileNames: 'app.[ext]',
+      },
+    },
+  },
 })

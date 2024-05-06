@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 import {
-  scopedPreflightStyles,
   isolateInsideOfContainer,
+  scopedPreflightStyles,
 } from 'tailwindcss-scoped-preflight'
 
 export default {

@@ -3,6 +3,7 @@ import antfu from '@antfu/eslint-config'
 export default antfu({
   vue: true,
   react: true,
+  stylistic: true,
   rules: {
     'antfu/top-level-function': 'off',
     'curly': 'off',

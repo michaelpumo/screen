@@ -1,31 +1,32 @@
 {
   "compilerOptions": {
+    "target": "ESNext",
+    "jsx": "react-jsx",
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
+    "useDefineForClassFields": true,
     "baseUrl": "./",
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "paths": {
       "@/*": ["src/*"]
     },
-    "sourceMap": true,
-    "esModuleInterop": true,
-    "outDir": "dist",
-    "declaration": true,
-    "emitDeclarationOnly": true,
-    "types": ["vitest", "jest", "vue"],
-    "target": "ESNext",
-    "useDefineForClassFields": true,
-    "module": "esnext",
-    "lib": ["ESNext", "DOM", "DOM.Iterable"],
-    "skipLibCheck": true,
-    "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
-    "isolatedModules": true,
-    "noEmit": false,
-    "jsx": "react-jsx",
+    "types": ["vitest", "jest", "vue"],
+    "allowImportingTsExtensions": true,
     "strict": true,
+    "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "noEmit": false,
+    "outDir": "dist",
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "skipLibCheck": true
   },
+  "references": [{ "path": "./tsconfig.node.json" }],
   "include": ["src/**/*.d.ts", "src/**/*.{vue,tsx,ts}"],
   "exclude": [
     "src/vue/App.vue",
@@ -37,6 +38,5 @@
     "src/react/main.ts",
     "src/react/__tests__/**/*",
     "dist/**/*"
-  ],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  ]
 }
