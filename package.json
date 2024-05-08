@@ -1,7 +1,7 @@
 {
   "name": "@michaelpumo/screen",
   "type": "module",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "private": false,
   "description": "A simple component to log the contents of a variable to the screen. Think of it as console.log for your UI.",
   "author": "Michael Pumo <hello@michaelpumo.com>",
