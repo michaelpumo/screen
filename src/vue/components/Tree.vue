@@ -33,7 +33,7 @@ const dataNestable = ['object', 'array'].includes(typeDisplay)
 <template>
   <table
     data-component="Tree"
-    class="sl-w-max sl-text-sm sl-text-type sl-font-mono sl-border-collapse sl-border-spacing-0 sl-outline-[rgba(0,0,0,0)] sl-rounded sl-outline sl-outline-2 hover:sl-outline-tertiary -sl-outline-offset-2 sl-transition-[outline] sl-duration-200"
+    class="sl-table"
   >
     <template v-if="calculatedDepth <= maxDepth">
       <thead>
