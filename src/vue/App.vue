@@ -2,58 +2,54 @@
 import Screen from './components/Screen.vue'
 
 const data = {
-  // document: document,
-  // window: window,
-  // globalThis: globalThis,
-  // self: self,
-  // top: top,
-  // parent: parent,
-  // frames: frames,
-  // history: history,
-  // location: location,
-  // navigator: navigator,
-  // screen: screen,
-  // localStorage: localStorage,
-  // sessionStorage: sessionStorage,
-  // indexedDB: indexedDB,
-  // caches: caches,
-  // fetch: fetch,
-  // Array: [1, 2, [1, 2, 3], 3],
+  // document, // ✅
+  // window, // ✅
+  // globalThis, // ✅
+  // self, // ✅
+  // top, // ✅
+  // parent, // ✅
+  // frames, // ✅
+  // history, // ✅
+  // location, // ✅
+  // navigator, // ✅
+  // screen, // ✅
+  // localStorage, // ✅
+  // sessionStorage, // ✅
+  // indexedDB, // ✅
+  // caches, // ✅
+  // fetch, // ✅
+  Array: [1, 2, [1, 2, 3], 'hello', 'goodbye'], // ✅
   // ArrayBuffer: new ArrayBuffer(8),
-  // AsyncFunction: async () => {},
-  // AsyncGenerator: function* () {},
-  // AsyncGeneratorFunction: async function* () {},
+  // AsyncFunction: async () => {}, // ✅
+  // *AsyncGenerator() {},
+  // async *AsyncGeneratorFunction() {}, // ✅
   // AsyncIterator: (async function* () {})(),
   // Atomics: Atomics.add(new Int32Array(8), 2, 7),
-
-  // ###### Causes Crash ######
-  // audio: new Audio(),
-  // ###### Causes Crash ######
-
-  // BigInt: BigInt(42),
+  // audio: new Audio(), // ✅
+  // BigInt: BigInt(42), // ✅
   // BigInt64Array: new BigInt64Array(8),
   // BigUint64Array: new BigUint64Array(8),
   // Boolean: true,
-  // BlobArr: new Blob(['Hello Blob'], { type: 'text/plain' }),
+  // BlobArr: new Blob(['Hello Blob'], { type: 'text/plain' }), // ✅
   // Blob: new Blob([JSON.stringify({ message: 'Hello World' }, null, 2)], {
   //   type: 'application/json',
-  // }),
-  // console: console,
-  // crypto: window.crypto,
+  // }), // ✅
+  // console, // ✅
+  // crypto: window.crypto, // ✅
   // DataView: new DataView(new ArrayBuffer(8)),
   // Date: new Date(),
-  // decodeURI: decodeURI('https://x.com?&name=michael'),
-  // decodeURIComponent: decodeURIComponent('https://x.com?name=michael'),
-  // encodeURI: encodeURI('https://x.com?name=michael'),
-  // encodeURIComponent: encodeURIComponent('https://x.com?name=michael'),
-  // Error: new Error('This is the error'),
-  // eval: eval('1 + 1'),
-  // EvalError: EvalError('This is an eval error'),
-  // file: new File([''], 'file.txt'),
+  // decodeURI: decodeURI('https://x.com?&name=michael'), // ✅
+  // decodeURIComponent: decodeURIComponent('https://x.com?name=michael'), // ✅
+  // encodeURI: encodeURI('https://x.com?name=michael'), // ✅
+  // encodeURIComponent: encodeURIComponent('https://x.com?name=michael'), // ✅
+  // Error: new Error('This is the error'), // ✅
+  // eval: eval('1 + 1'), // ✅
+  // EvalError: new EvalError('This is an eval error'), // ✅
+  // file: new File([''], 'file.txt'), // ✅
   // Float32Array: new Float32Array(8),
   // Float64Array: new Float64Array(8),
-  // Function: function () {},
-  // Generator: function* () {},
+  // Function() {}, // ✅
+  // *Generator() {}, // ✅
   // GeneratorFunction: function* () {}.constructor,
   // image: new Image(),
   // Infinity: Infinity,
@@ -61,20 +57,20 @@ const data = {
   // Int32Array: new Int32Array(8),
   // Int8Array: new Int8Array(8),
   // Intl: Intl.DateTimeFormat('en-US').format(new Date()),
-  // IntlObj: Intl,
+  // IntlObj: Intl, // ✅
   // isFinite: isFinite(42),
   // isNaN: isNaN(42),
   // Iterator: (function* () {})(),
-  // JSON: JSON,
+  // JSON, // ✅
   // Map: new Map([
   //   ['key', 'value'],
   //   ['name', 'michael'],
   // ]),
-  // Math: Math,
-  // NaN: NaN,
+  // Math: window.Math, // ✅
+  // NaN: Number.NaN,
   // Number: Number(42),
   // Null: null,
-  // Object: { key: 'value' },
+  Object: { name: 'Michael', age: 40, alive: true }, // ✅
   // performance: window.performance,
   // parseFloat: parseFloat('42'),
   // parseInt: parseInt('42'),
@@ -90,11 +86,11 @@ const data = {
   //     },
   //   },
   // ),
-  // ProxyObj: Proxy,
+  // ProxyObj: Proxy, // ✅
   // RangeError: new RangeError('This is a range error'),
   // ReferenceError: new ReferenceError('This is a reference error'),
-  // Reflect: Reflect,
-  // RegExp: /regexp/,
+  // Reflect, // ✅
+  // RegExp: /regexp/, // ✅
   // Set: new Set().add({ a: 'a', b: 'b' }).add({ c: 'c', d: 'd' }),
   // String: 'Hello, World!',
   // Symbol: Symbol('symbol'),
@@ -105,7 +101,7 @@ const data = {
   // Uint32Array: new Uint32Array(8),
   // Uint8Array: new Uint8Array(8),
   // Uint8ClampedArray: new Uint8ClampedArray(8),
-  // undefined: undefined,
+  // undefined, // ✅
   // URIError: new URIError('This is a URI error'),
   // url: new URL('https://www.example.com?hello=world&name=michael'),
   // WeakMap: new WeakMap(),
@@ -116,17 +112,11 @@ const data = {
 
 <template>
   <main class="sl-p-10 sl-grid sl-grid-cols-1 sl-gap-10">
-    <section>
-      <h1 class="sl-text-type sl-font-mono sl-text-lg sl-font-bold sl-mt-0 sl-mb-5">
-        Demo
-      </h1>
-
-      <Screen
-        :log="data"
-        label="Data"
-        :max-depth="20"
-        :max-length="20"
-      />
-    </section>
+    <Screen
+      :log="data"
+      label="Data"
+      :max-depth="50"
+      :max-length="50"
+    />
   </main>
 </template>

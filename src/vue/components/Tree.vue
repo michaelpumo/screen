@@ -27,7 +27,13 @@ const {
 
 const calculatedDepth = currentDepth + 1
 const { data, typeDisplay, typeRaw } = await formatData(log)
-const dataNestable = ['object', 'array'].includes(typeDisplay)
+const isNestable = ['object', 'array'].includes(typeDisplay)
+
+const getStruct = (data: Record<string, unknown> | unknown[]) => {
+  return typeDisplay === 'array'
+    ? truncate(data, maxLength)
+    : Object.keys(truncate(data, maxLength))
+}
 </script>
 
 <template>
@@ -39,16 +45,17 @@ const dataNestable = ['object', 'array'].includes(typeDisplay)
       <thead>
         <tr @click="toggleRows">
           <Component
-            :is="dataNestable ? 'th' : 'td'"
-            :class="`sl-text-left sl-bg-primary sl-align-top ${dataNestable ? 'sl-p-1 sl-m-0 sl-border-2 sl-border-solid sl-border-secondary' : 'sl-border-none sl-border-0'}`"
+            :is="isNestable ? 'th' : 'td'"
+            :class="`sl-text-left sl-bg-primary sl-align-top ${isNestable ? 'sl-p-1 sl-m-0 sl-border-2 sl-border-solid sl-border-secondary' : 'sl-border-none sl-border-0'}`"
           >
-            <template v-if="dataNestable">
+            <template v-if="isNestable">
               <div
                 class="sl-select-none sl-cursor-pointer sl-bg-secondary sl-px-1.5 sl-py-0.5 sl-rounded sl-text-muted"
               >
                 {{ typeDisplay === 'array' ? 'i' : 'key' }}
               </div>
             </template>
+
             <template v-else>
               <!-- Basic Types -->
               <div
@@ -60,10 +67,10 @@ const dataNestable = ['object', 'array'].includes(typeDisplay)
           </Component>
 
           <Component
-            :is="dataNestable ? 'th' : 'td'"
-            :class="`sl-text-left sl-bg-primary ${dataNestable ? 'sl-p-1 sl-m-0 sl-border-2 sl-border-solid sl-border-secondary' : 'sl-border-none sl-border-0'}`"
+            :is="isNestable ? 'th' : 'td'"
+            :class="`sl-text-left sl-bg-primary ${isNestable ? 'sl-p-1 sl-m-0 sl-border-2 sl-border-solid sl-border-secondary' : 'sl-border-none sl-border-0'}`"
           >
-            <template v-if="dataNestable">
+            <template v-if="isNestable">
               <div
                 :class="`sl-flex sl-items-center sl-justify-start sl-gap-1.5 sl-bg-secondary sl-px-1.5 sl-py-0.5 sl-rounded sl-select-none sl-cursor-pointer sl-text-token-${typeRaw}`"
               >
@@ -76,6 +83,7 @@ const dataNestable = ['object', 'array'].includes(typeDisplay)
                 />
               </div>
             </template>
+
             <template v-else>
               <div
                 class="sl-flex sl-items-center sl-justify-start sl-gap-1.5 sl-bg-secondary sl-px-1.5 sl-py-0.5 sl-rounded sl-text-balance sl-max-w-[60ch] sl-max-h-20 sl-overflow-y-auto sl-overscroll-contain"
@@ -99,75 +107,39 @@ const dataNestable = ['object', 'array'].includes(typeDisplay)
         </tr>
       </thead>
 
-      <template v-if="dataNestable">
+      <template v-if="isNestable">
         <tbody>
-          <!-- Object-like -->
-          <template
-            v-if="data && typeof data === 'object' && typeDisplay === 'object'"
+          <tr
+            v-for="(value, index) of getStruct(data)"
+            :key="index"
           >
-            <tr
-              v-for="key in Object.keys(truncate(data, maxLength))"
-              :key="key"
+            <td
+              :class="`sl-bg-primary sl-align-top ${isNestable ? 'sl-p-1 sl-m-0 sl-border-2 sl-border-solid sl-border-secondary' : 'sl-border-none sl-border-0'}`"
             >
-              <td
-                :class="`sl-bg-primary sl-align-top ${dataNestable ? 'sl-p-1 sl-m-0 sl-border-2 sl-border-solid sl-border-secondary' : 'sl-border-none sl-border-0'}`"
+              <div
+                class="sl-text-muted sl-px-1.5 sl-py-0.5"
               >
-                <div
-                  :class="`sl-text-muted sl-px-1.5 ${['object', 'array'].includes(getType((data as Record<string, unknown>)[key])) ? 'sl-py-1.5' : 'sl-py-0.5'}`"
-                >
-                  {{ key }}
-                </div>
-              </td>
-              <td
-                :class="`sl-bg-primary ${dataNestable ? 'sl-p-1 sl-m-0 sl-border-2 sl-border-solid sl-border-secondary' : 'sl-border-none sl-border-0'}`"
-              >
-                <Tree
-                  :log="(data as Record<string, unknown>)[key]"
-                  :max-length="maxLength"
-                  :max-depth="maxDepth"
-                  :current-depth="calculatedDepth"
-                />
-              </td>
-            </tr>
+                {{ typeDisplay === 'array' ? index : value }}
+              </div>
+            </td>
 
-            <NoticeMaxLength
-              v-if="getLength(data) > maxLength"
-              :value="data"
-              :max-length="maxLength"
-            />
-          </template>
-
-          <!-- Array-like -->
-          <template v-else>
-            <tr
-              v-for="(value, index) of truncate(data, maxLength)"
-              :key="index"
+            <td
+              :class="`sl-bg-primary ${isNestable ? 'sl-p-1 sl-m-0 sl-border-2 sl-border-solid sl-border-secondary' : 'sl-border-none sl-border-0'}`"
             >
-              <td
-                :class="`sl-bg-primary sl-align-top ${dataNestable ? 'sl-p-1 sl-m-0 sl-border-2 sl-border-solid sl-border-secondary' : 'sl-border-none sl-border-0'}`"
-              >
-                <div class="sl-px-1.5 sl-py-0.5 sl-text-muted">
-                  {{ index }}
-                </div>
-              </td>
-              <td
-                :class="`sl-bg-primary sl-align-top ${dataNestable ? 'sl-p-1 sl-m-0 sl-border-2 sl-border-solid sl-border-secondary' : 'sl-border-none sl-border-0'}`"
-              >
-                <Tree
-                  :log="value"
-                  :max-length="maxLength"
-                  :max-depth="maxDepth"
-                  :current-depth="calculatedDepth"
-                />
-              </td>
-            </tr>
+              <Tree
+                :log="typeDisplay === 'array' ? value : (data as Record<string, unknown>)[value]"
+                :max-length="maxLength"
+                :max-depth="maxDepth"
+                :current-depth="calculatedDepth"
+              />
+            </td>
+          </tr>
 
-            <NoticeMaxLength
-              v-if="getLength(data) > maxLength"
-              :value="data"
-              :max-length="maxLength"
-            />
-          </template>
+          <NoticeMaxLength
+            v-if="getLength(data) > maxLength"
+            :value="data"
+            :max-length="maxLength"
+          />
         </tbody>
       </template>
     </template>

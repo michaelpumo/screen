@@ -95,13 +95,14 @@ const formatData = async (value: unknown): Promise<LogData> => {
 
   if (
     [
-      'array',
       'bigint',
       'boolean',
+      'date',
       'function',
       'null',
       'number',
       'object',
+      'regexp',
       'string',
       'symbol',
       'undefined',
@@ -187,13 +188,14 @@ const formatData = async (value: unknown): Promise<LogData> => {
   }
   else {
     const temp = value as any // ObjectTypes
-    const propertyNames = Object.getOwnPropertyNames(temp)
 
-    if (Array.isArray(propertyNames) && propertyNames.length) {
-      for (const key of propertyNames) {
-        const current = temp[key as keyof any]
-        obj[key] = isCircular(current) ? `Circular Ref: ${key}` : current
-      }
+    if (Array.isArray(data)) {
+      // data.forEach((item, index) => {
+      //   const current = temp[item as keyof any]
+      //   obj[index] = isCircular(current) ? `Circular Ref: ${item}` : current
+      // })
+      console.log('Array', data)
+      typeDisplay = 'array'
     }
     else if (['mimetype'].includes(typeRaw)) {
       // console.log(
@@ -209,10 +211,10 @@ const formatData = async (value: unknown): Promise<LogData> => {
         const current = temp[key as keyof any]
         obj[key] = isCircular(current) ? `Circular Ref: ${key}` : current
       }
-    }
 
-    data = obj
-    typeDisplay = 'object'
+      data = obj
+      typeDisplay = 'object'
+    }
   }
 
   return { data, typeDisplay, dataRaw, typeRaw }

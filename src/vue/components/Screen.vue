@@ -66,6 +66,7 @@ const maxDepthSanitized = computed(() =>
         <li v-if="maxLengthSanitized !== Number.POSITIVE_INFINITY">
           Max Length: {{ maxLengthSanitized }}
         </li>
+
         <li v-if="maxDepthSanitized !== Number.POSITIVE_INFINITY">
           Max Depth: {{ maxDepthSanitized }}
         </li>
