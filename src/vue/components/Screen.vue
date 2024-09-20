@@ -48,9 +48,7 @@ const maxDepthSanitized = computed(() =>
     :data-mode="mode === 'dark' ? 'dark' : 'light'"
     class="sl-pf sl-w-full sl-max-w-max sl-p-1 sl-bg-secondary sl-rounded sl-antialiased"
   >
-    <header
-      class="sl-component-header"
-    >
+    <header class="sl-component-header">
       <p
         v-if="labelSanitized"
         data-test-label

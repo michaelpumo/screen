@@ -48,18 +48,13 @@ const getStruct = (data: Record<string, unknown> | unknown[]) => {
             :class="`sl-text-left sl-bg-primary sl-align-top ${isNestable ? 'sl-p-1 sl-m-0 sl-border-2 sl-border-solid sl-border-secondary' : 'sl-border-none sl-border-0'}`"
           >
             <template v-if="isNestable">
-              <div
-                class="sl-select-none sl-cursor-pointer sl-bg-secondary sl-px-1.5 sl-py-0.5 sl-rounded sl-text-muted"
-              >
+              <div class="sl-select-none sl-cursor-pointer sl-bg-secondary sl-px-1.5 sl-py-0.5 sl-rounded sl-text-muted">
                 {{ typeDisplay === 'array' ? 'i' : 'key' }}
               </div>
             </template>
 
             <template v-else>
-              <!-- Basic Types -->
-              <div
-                :class="`sl-bg-secondary sl-px-1.5 sl-py-0.5 sl-rounded sl-text-token-${typeRaw}`"
-              >
+              <div :class="`sl-bg-secondary sl-px-1.5 sl-py-0.5 sl-rounded sl-text-token-${typeRaw}`">
                 {{ typeRaw }}
               </div>
             </template>
@@ -70,9 +65,7 @@ const getStruct = (data: Record<string, unknown> | unknown[]) => {
             :class="`sl-text-left sl-bg-primary ${isNestable ? 'sl-p-1 sl-m-0 sl-border-2 sl-border-solid sl-border-secondary' : 'sl-border-none sl-border-0'}`"
           >
             <template v-if="isNestable">
-              <div
-                :class="`sl-flex sl-items-center sl-justify-start sl-gap-1.5 sl-bg-secondary sl-px-1.5 sl-py-0.5 sl-rounded sl-select-none sl-cursor-pointer sl-text-token-${typeRaw}`"
-              >
+              <div :class="`sl-flex sl-items-center sl-justify-start sl-gap-1.5 sl-bg-secondary sl-px-1.5 sl-py-0.5 sl-rounded sl-select-none sl-cursor-pointer sl-text-token-${typeRaw}`">
                 {{ typeRaw }}
 
                 <LengthCount
@@ -84,9 +77,7 @@ const getStruct = (data: Record<string, unknown> | unknown[]) => {
             </template>
 
             <template v-else>
-              <div
-                class="sl-flex sl-items-center sl-justify-start sl-gap-1.5 sl-bg-secondary sl-px-1.5 sl-py-0.5 sl-rounded sl-text-balance sl-max-w-[60ch] sl-max-h-20 sl-overflow-y-auto sl-overscroll-contain"
-              >
+              <div class="sl-flex sl-items-center sl-justify-start sl-gap-1.5 sl-bg-secondary sl-px-1.5 sl-py-0.5 sl-rounded sl-text-balance sl-max-w-[60ch] sl-max-h-20 sl-overflow-y-auto sl-overscroll-contain">
                 <span class="sl-my-auto sl-whitespace-pre">
                   {{
                     typeRaw === 'string' && !(data as string).length
@@ -112,19 +103,13 @@ const getStruct = (data: Record<string, unknown> | unknown[]) => {
             v-for="(value, index) of getStruct(data)"
             :key="index"
           >
-            <td
-              :class="`sl-bg-primary sl-align-top ${isNestable ? 'sl-p-1 sl-m-0 sl-border-2 sl-border-solid sl-border-secondary' : 'sl-border-none sl-border-0'}`"
-            >
-              <div
-                class="sl-text-muted sl-px-1.5 sl-py-0.5"
-              >
+            <td :class="`sl-bg-primary sl-align-top ${isNestable ? 'sl-p-1 sl-m-0 sl-border-2 sl-border-solid sl-border-secondary' : 'sl-border-none sl-border-0'}`">
+              <div class="sl-text-muted sl-px-1.5 sl-py-0.5">
                 {{ typeDisplay === 'array' ? index : value }}
               </div>
             </td>
 
-            <td
-              :class="`sl-bg-primary ${isNestable ? 'sl-p-1 sl-m-0 sl-border-2 sl-border-solid sl-border-secondary' : 'sl-border-none sl-border-0'}`"
-            >
+            <td :class="`sl-bg-primary ${isNestable ? 'sl-p-1 sl-m-0 sl-border-2 sl-border-solid sl-border-secondary' : 'sl-border-none sl-border-0'}`">
               <Tree
                 :log="typeDisplay === 'array' ? value : (data as Record<string, unknown>)[value]"
                 :max-length="maxLength"
