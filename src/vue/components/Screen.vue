@@ -94,7 +94,7 @@ const maxDepthSanitized = computed(() =>
         Made by
         <a
           class="sl-text-quaternary"
-          href="https://x.com/michaelpumo"
+          href="https://github.com/michaelpumo"
           target="_blank"
         >
           @michaelpumo
