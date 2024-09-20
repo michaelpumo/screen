@@ -39,7 +39,7 @@ const getStruct = (data: Record<string, unknown> | unknown[]) => {
 <template>
   <table
     data-component="Tree"
-    class="sl-table"
+    class="sl-component-table"
   >
     <template v-if="calculatedDepth <= maxDepth">
       <thead>

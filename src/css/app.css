@@ -157,7 +157,20 @@
 }
 
 @layer components {
-  .sl-table {
+  .sl-component-header {
+    @apply sl-w-full sl-flex sl-items-center sl-justify-between sl-bg-primary sl-px-2 sl-py-1.5 sl-rounded-tl sl-rounded-tr sl-gap-3 sl-border-2 sl-border-secondary sl-border-b-0;
+  }
+
+  .sl-component-main {
+    @apply sl-overflow-x-auto sl-overscroll-x-contain;
+  }
+
+  .sl-component-footer {
+    @apply sl-w-full sl-flex sl-items-center sl-justify-between sl-bg-primary sl-px-2 sl-py-2 sl-rounded-bl sl-rounded-br sl-gap-3 sl-border-2 sl-border-secondary sl-border-t-0;
+  }
+
+  .sl-component-table {
     @apply sl-w-max sl-text-sm sl-text-type sl-font-mono sl-border-collapse sl-border-spacing-0 sl-outline-[rgba(0,0,0,0)] sl-rounded sl-outline sl-outline-2 hover:sl-outline-tertiary -sl-outline-offset-2 sl-transition-[outline] sl-duration-200;
   }
+
 }

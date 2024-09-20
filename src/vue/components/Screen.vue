@@ -49,7 +49,7 @@ const maxDepthSanitized = computed(() =>
     class="sl-pf sl-w-full sl-max-w-max sl-p-1 sl-bg-secondary sl-rounded sl-antialiased"
   >
     <header
-      class="sl-w-full sl-flex sl-items-center sl-justify-between sl-bg-primary sl-px-2 sl-py-1.5 sl-rounded-tl sl-rounded-tr sl-gap-3 sl-border-2 sl-border-secondary sl-border-b-0"
+      class="sl-component-header"
     >
       <p
         v-if="labelSanitized"
@@ -75,7 +75,7 @@ const maxDepthSanitized = computed(() =>
 
     <main
       data-test-main
-      class="sl-overflow-x-auto sl-overscroll-x-contain"
+      class="sl-component-main"
     >
       <Suspense>
         <Tree
@@ -88,7 +88,7 @@ const maxDepthSanitized = computed(() =>
 
     <footer
       data-test-footer
-      class="sl-w-full sl-flex sl-items-center sl-justify-between sl-bg-primary sl-px-2 sl-py-2 sl-rounded-bl sl-rounded-br sl-gap-3 sl-border-2 sl-border-secondary sl-border-t-0"
+      class="sl-component-footer"
     >
       <p class="sl-text-type sl-font-mono sl-text-xs sl-m-0 sl-p-0">
         Made by
