@@ -31,17 +31,19 @@ export default defineConfig({
       entry: {
         react: resolve(__dirname, 'src/react/lib.ts'),
         vue: resolve(__dirname, 'src/vue/lib.ts'),
+        nuxt: resolve(__dirname, 'src/nuxt/lib.ts'),
       },
       name: 'screen',
       fileName: (format, entryName) => `${entryName}/screen.${format}.js`,
     },
     rollupOptions: {
-      external: ['react', 'react-dom', 'vue'],
+      external: ['react', 'react-dom', 'vue', '@nuxt/kit'],
       output: {
         globals: {
           'react': 'React',
           'react-dom': 'ReactDOM',
           'vue': 'Vue',
+          '@nuxt/kit': 'NuxtKit',
         },
         assetFileNames: 'app.[ext]',
       },

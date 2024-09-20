@@ -133,7 +133,7 @@ const formatData = async (value: unknown): Promise<LogData> => {
     typeDisplay = 'array'
   }
   else if (ArrayBuffer.isView(value)) {
-    data = Array.from(value)
+    data = Array.from(new Uint8Array(value.buffer))
     typeDisplay = 'array'
   }
   else if (value instanceof Blob) {

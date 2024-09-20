@@ -28,10 +28,19 @@ const calculatedDepth = currentDepth + 1
 const { data, typeDisplay, typeRaw } = await formatData(log)
 const isNestable = ['object', 'array'].includes(typeDisplay)
 
-const getStruct = (data: Record<string, unknown> | unknown[]) => {
-  return typeDisplay === 'array'
-    ? truncate(data, maxLength)
-    : Object.keys(truncate(data, maxLength))
+// const getStruct = (data: Record<string, unknown> | unknown[]) => {
+//   return typeDisplay === 'array'
+//     ? truncate(data, maxLength)
+//     : Object.keys(truncate(data, maxLength))
+// }
+const getStruct = (data: unknown) => {
+  if (Array.isArray(data)) {
+    return truncate(data, maxLength)
+  }
+  else if (typeof data === 'object' && data !== null) {
+    return Object.keys(truncate(data as Record<string, unknown>, maxLength))
+  }
+  return []
 }
 </script>
 
