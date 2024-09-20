@@ -2,7 +2,6 @@
 import {
   formatData,
   getLength,
-  getType,
   hasLength,
   toggleRows,
   truncate,
@@ -90,7 +89,7 @@ const getStruct = (data: Record<string, unknown> | unknown[]) => {
               >
                 <span class="sl-my-auto sl-whitespace-pre">
                   {{
-                    typeRaw === 'string' && !data.length
+                    typeRaw === 'string' && !(data as string).length
                       ? '(empty)'
                       : data ?? '(empty)'
                   }}

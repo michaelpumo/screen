@@ -69,16 +69,6 @@ const truncate = (value: unknown, maxLength: number): object => {
   return value as object
 }
 
-const isCircular = (value: unknown) => {
-  try {
-    JSON.stringify(value)
-    return false
-  }
-  catch (error) {
-    return true
-  }
-}
-
 interface LogData {
   data: unknown
   dataRaw: unknown
@@ -92,127 +82,82 @@ const formatData = async (value: unknown): Promise<LogData> => {
   let data = value
   let typeDisplay = typeRaw
   const obj: Record<string, unknown> = {}
+  const visited = new Set()
 
-  if (
-    [
-      'bigint',
-      'boolean',
-      'date',
-      'function',
-      'null',
-      'number',
-      'object',
-      'regexp',
-      'string',
-      'symbol',
-      'undefined',
-    ].includes(typeRaw)
-  ) {
+  const handleCircular = (key: string, val: unknown) => {
+    if (typeof val === 'object' && val !== null) {
+      if (visited.has(val)) {
+        return `Circular Ref: ${key}`
+      }
+
+      visited.add(val)
+    }
+
+    return val
+  }
+
+  const processObject = (val: object) => {
+    for (const key of Object.getOwnPropertyNames(val)) {
+      const current = (val as any)[key]
+      obj[key] = handleCircular(key, current)
+    }
+    return obj
+  }
+
+  if (['bigint', 'boolean', 'function', 'number', 'string', 'symbol', 'undefined'].includes(typeRaw)) {
     return { data, typeDisplay, dataRaw, typeRaw }
   }
 
-  if (['error', 'intl', 'math', 'json'].includes(typeRaw)) {
-    type Intl = typeof Intl
-    type ObjectTypes = Error | Math | JSON | Intl
-
-    const temp = value as ObjectTypes
-
-    for (const key of Object.getOwnPropertyNames(temp)) {
-      const current = temp[key as keyof ObjectTypes]
-      obj[key] = isCircular(current) ? `Circular Ref: ${key}` : current
-    }
-
-    data = obj
-    typeDisplay = 'object'
+  if (value === null) {
+    return { data: null, typeDisplay: 'null', dataRaw, typeRaw: 'null' }
   }
-  else if (['map', 'urlsearchparams'].includes(typeRaw)) {
-    const temp = value as Map<string, string> | URLSearchParams
 
-    for (const [key, value] of temp.entries()) {
-      obj[key] = isCircular(value) ? `Circular Ref: ${key}` : value
-    }
-
-    data = obj
-    typeDisplay = 'object'
+  if (value instanceof Date) {
+    return { data: value.toISOString(), typeDisplay: 'date', dataRaw, typeRaw }
   }
-  else if (typeRaw === 'arraybuffer') {
-    const buffer = value as ArrayBuffer
-    const typedArray = new Uint8Array(buffer)
 
-    data = [...typedArray]
+  if (value instanceof Error) {
+    return { data: { name: value.name, message: value.message, stack: value.stack }, typeDisplay: 'error', dataRaw, typeRaw }
+  }
+
+  if (value instanceof RegExp) {
+    return { data: value.toString(), typeDisplay: 'regexp', dataRaw, typeRaw }
+  }
+
+  if (value instanceof Map || value instanceof Set) {
+    data = Array.from(value)
     typeDisplay = 'array'
   }
-  else if (typeRaw === 'blob') {
-    const temp = value as Blob
-
-    const readBlobContents = async (blob: Blob) => {
-      try {
-        const contents = await blob.text()
-        return contents
-      }
-      catch (error) {
-        return error
-      }
-    }
-
-    const result = await readBlobContents(temp)
-
-    data = {
-      payload: result,
-      size: temp.size,
-      type: temp.type,
-    }
-    typeDisplay = 'object'
-  }
-  else if (
-    [
-      'bigint64array',
-      'biguint64array',
-      'float32array',
-      'float64array',
-      'int8array',
-      'int16array',
-      'int32array',
-      'set',
-      'uint8array',
-      'uint16array',
-      'uint16array',
-      'uint32array',
-      'uint8clampedarray',
-    ].includes(typeRaw)
-  ) {
-    const temp = value as Uint8Array
-
-    data = [...temp]
+  else if (value instanceof ArrayBuffer) {
+    data = Array.from(new Uint8Array(value))
     typeDisplay = 'array'
   }
-  else {
-    const temp = value as any // ObjectTypes
-
-    if (Array.isArray(data)) {
-      // data.forEach((item, index) => {
-      //   const current = temp[item as keyof any]
-      //   obj[index] = isCircular(current) ? `Circular Ref: ${item}` : current
-      // })
-      console.log('Array', data)
+  else if (ArrayBuffer.isView(value)) {
+    data = Array.from(value)
+    typeDisplay = 'array'
+  }
+  else if (value instanceof Blob) {
+    try {
+      const contents = await value.text()
+      data = {
+        payload: contents,
+        size: value.size,
+        type: value.type,
+      }
+      typeDisplay = 'object'
+    }
+    catch (error) {
+      data = `Error reading Blob: ${error}`
+      typeDisplay = 'error'
+    }
+  }
+  else if (typeof value === 'object') {
+    if (Array.isArray(value)) {
+      data = value.map((item, index) => handleCircular(index.toString(), item))
       typeDisplay = 'array'
     }
-    else if (['mimetype'].includes(typeRaw)) {
-      // console.log(
-      //   'Circular',
-      //   isCircular(temp),
-      //   typeRaw,
-      //   temp,
-      //   Object.keys(temp),
-      // )
-    }
     else {
-      for (const key in temp) {
-        const current = temp[key as keyof any]
-        obj[key] = isCircular(current) ? `Circular Ref: ${key}` : current
-      }
-
-      data = obj
+      data = processObject(value)
       typeDisplay = 'object'
     }
   }
