@@ -2,7 +2,6 @@
 
 import { resolve } from 'node:path'
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
 import vue from '@vitejs/plugin-vue'
 
 export default defineConfig({
@@ -10,9 +9,6 @@ export default defineConfig({
     globals: true,
   },
   plugins: [
-    react({
-      jsxRuntime: 'classic',
-    }),
     vue({
       script: {
         defineModel: true,
@@ -29,7 +25,6 @@ export default defineConfig({
     outDir: resolve(__dirname, 'dist'),
     lib: {
       entry: {
-        react: resolve(__dirname, 'src/react/lib.ts'),
         vue: resolve(__dirname, 'src/vue/lib.ts'),
         nuxt: resolve(__dirname, 'src/nuxt/lib.ts'),
       },
@@ -37,11 +32,9 @@ export default defineConfig({
       fileName: (format, entryName) => `${entryName}/screen.${format}.js`,
     },
     rollupOptions: {
-      external: ['react', 'react-dom', 'vue', '@nuxt/kit'],
+      external: ['vue', '@nuxt/kit'],
       output: {
         globals: {
-          'react': 'React',
-          'react-dom': 'ReactDOM',
           'vue': 'Vue',
           '@nuxt/kit': 'NuxtKit',
         },

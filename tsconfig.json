@@ -33,10 +33,6 @@
     "src/vue/demo/**/*",
     "src/vue/main.ts",
     "src/vue/__tests__/**/*",
-    "src/react/App.tsx",
-    "src/react/demo/**/*",
-    "src/react/main.ts",
-    "src/react/__tests__/**/*",
     "dist/**/*"
   ]
 }
