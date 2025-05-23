@@ -27,7 +27,7 @@
     "skipLibCheck": true
   },
   "references": [{ "path": "./tsconfig.node.json" }],
-  "include": ["src/**/*.d.ts", "src/**/*.{vue,tsx,ts}"],
+  "include": ["src/**/*.d.ts", "src/**/*.{vue,ts}"],
   "exclude": [
     "src/vue/App.vue",
     "src/vue/demo/**/*",

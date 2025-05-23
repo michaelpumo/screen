@@ -49,7 +49,7 @@ const toggleRows = (e: Event) => {
   }
 
   rows.forEach((tr) => {
-    tr.classList.toggle('sl-hidden')
+    tr.classList.toggle('sl:hidden')
   })
 }
 
@@ -165,4 +165,4 @@ const formatData = async (value: unknown): Promise<LogData> => {
   return { data, typeDisplay, dataRaw, typeRaw }
 }
 
-export { wait, getType, getLength, hasLength, toggleRows, truncate, formatData }
+export { formatData, getLength, getType, hasLength, toggleRows, truncate, wait }

@@ -111,10 +111,19 @@ const data = {
 </script>
 
 <template>
-  <main class="sl-p-10 sl-grid sl-grid-cols-1 sl-gap-10">
+  <main class="sl:p-10 sl:flex sl:gap-10 sl:flex-wrap sl:justify-center sl:items-start">
     <Screen
-      :log="data"
+      mode="dark"
       label="Data"
+      :log="data"
+      :max-depth="50"
+      :max-length="50"
+    />
+
+    <Screen
+      mode="light"
+      label="Data"
+      :log="data"
       :max-depth="50"
       :max-length="50"
     />

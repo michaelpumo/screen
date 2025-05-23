@@ -46,20 +46,20 @@ const maxDepthSanitized = computed(() =>
   <div
     data-component="Screen"
     :data-mode="mode === 'dark' ? 'dark' : 'light'"
-    class="sl-pf sl-w-full sl-max-w-max sl-p-1 sl-bg-secondary sl-rounded sl-antialiased"
+    class="sl:pf sl:w-full sl:max-w-max sl:p-1 sl:bg-secondary sl:rounded sl:antialiased"
   >
     <header class="sl-component-header">
       <p
         v-if="labelSanitized"
         data-test-label
-        class="sl-text-type sl-font-mono sl-text-sm sl-font-bold sl-m-0 sl-p-0"
+        class="sl:text-type sl:font-mono sl:text-sm sl:font-bold sl:m-0 sl:p-0"
       >
         {{ labelSanitized }}
       </p>
 
       <ul
         data-test-options
-        class="sl-flex sl-m-0 sl-p-0 sl-ml-auto sl-text-muted sl-font-mono sl-text-xs sl-gap-2"
+        class="sl:flex sl:m-0 sl:p-0 sl:ml-auto sl:text-muted sl:font-mono sl:text-xs sl:gap-2"
       >
         <li v-if="maxLengthSanitized !== Number.POSITIVE_INFINITY">
           Max Length: {{ maxLengthSanitized }}
@@ -88,10 +88,10 @@ const maxDepthSanitized = computed(() =>
       data-test-footer
       class="sl-component-footer"
     >
-      <p class="sl-text-type sl-font-mono sl-text-xs sl-m-0 sl-p-0">
+      <p class="sl:text-type sl:font-mono sl:text-xs sl:m-0 sl:p-0">
         Made by
         <a
-          class="sl-text-quaternary"
+          class="sl:text-quaternary"
           href="https://github.com/michaelpumo"
           target="_blank"
         >
