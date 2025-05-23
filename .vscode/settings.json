@@ -1,0 +1,37 @@
+{
+  "workbench.editorAssociations": { "*.svg": "default" },
+  "eslint.useFlatConfig": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "typescript.suggest.autoImports": false,
+  "javascript.suggest.autoImports": false,
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+  // Disable the default formatter, use eslint instead
+  "prettier.enable": false,
+  "editor.formatOnSave": false,
+  // Auto fix
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "never"
+  },
+  // Enable eslint for all supported languages
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "vue",
+    "html",
+    "markdown",
+    "json",
+    "jsonc",
+    "yaml",
+    "toml",
+    "gql",
+    "graphql"
+  ],
+  "[tailwindcss]": {
+    "editor.defaultFormatter": "stylelint.vscode-stylelint"
+  }
+}
